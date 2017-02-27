@@ -1,0 +1,3 @@
+#  C# 从入门到……
+
++ [checked (C# Reference)](https://msdn.microsoft.com/en-us/library/74b4xzyw.aspx)
