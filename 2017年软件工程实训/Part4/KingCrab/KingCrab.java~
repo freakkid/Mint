@@ -1,0 +1,40 @@
+import info.gridworld.actor.Actor;
+import info.gridworld.actor.Rock;
+import info.gridworld.actor.Critter;
+import info.gridworld.grid.Location;
+import info.gridworld.grid.Grid;
+
+import java.awt.Color;
+import java.util.ArrayList;
+
+public class KingCrab extends CrabCritter
+{
+	public void processActors(ArrayList<Actor> actors)
+    {
+        Location curLoc = getLocation();
+    	int curDirection = getDirection();
+    	Grid<Actor> grid = getGrid();
+        for (Actor a : actors)
+        {
+         	ArrayList<Location> emptyLocs = grid.getEmptyAdjacentLocations(a.getLocation());
+         	int curDistaceSqu = distanceSquareTwoLocation(a.getLocation(), curLoc);
+            boolean isPulled = false;
+         	for (Location loc : emptyLocs)
+         	{
+         		if (distanceSquareTwoLocation(loc, curLoc) > curDistaceSqu)
+         		{
+         			a.moveTo(loc);
+                    isPulled = true;
+         			break;
+         		}
+         	}
+            if (!isPulled)
+                a.removeSelfFromGrid();
+        }
+    }
+    private int distanceSquareTwoLocation(Location loc1, Location loc2) 
+    {   
+    	return (loc1.getRow() - loc2.getRow()) * (loc1.getRow() - loc2.getRow()) +
+    			(loc1.getCol() - loc2.getCol()) * (loc1.getCol() - loc2.getCol());
+    }
+}
