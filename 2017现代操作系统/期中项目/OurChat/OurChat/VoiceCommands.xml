@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VoiceCommands xmlns="http://schemas.microsoft.com/voicecommands/1.2">
+  <CommandSet xml:lang="zh-cn" Name="set">
+    <AppName>图灵机器人</AppName>
+    <Example> 打开主页</Example>
+    <Command Name="OpenMainPage">
+      <Example>打开主页</Example>
+      <ListenFor>打开主页</ListenFor>
+      <Feedback>正在启动图灵机器人……</Feedback>
+      <Navigate />
+    </Command>
+  </CommandSet>
+</VoiceCommands>
