@@ -154,25 +154,38 @@ void HelloWorld::update(float dt) {
 }
 
 void HelloWorld::up_run(cocos2d::Ref* pSender) {
+	if (!triggering) {
 		running(up);
+		triggering = true;
+	}
 }
 
 void HelloWorld::down_run(cocos2d::Ref* pSender) {
-	running(down);
+	if (!triggering) {
+		running(down);
+		triggering = true;
+	}
 }
 
 void HelloWorld::left_run(cocos2d::Ref* pSender) {
-	running(left);
+	if (!triggering) {
+		running(left);
+		triggering = true;
+	}
 }
 
 void HelloWorld::right_run(cocos2d::Ref* pSender) {
-	running(right);
+	if (!triggering) {
+		running(right);
+		triggering = true;
+	}
 }
 
 void HelloWorld::running(int direction) {
 	// 走路的动画
 	auto animation = Animation::createWithSpriteFrames(run, 0.03f);
 	auto animate = Animate::create(animation);
+	auto func = CallFuncN::create(CC_CALLBACK_0(HelloWorld::enable_trigger, this));
 	// 根据方向判断
 	switch (direction) {
 		case up:
@@ -183,41 +196,48 @@ void HelloWorld::running(int direction) {
 				auto move_to = MoveTo::create(0.3f, Vec2(player->getPosition().x, player->getPosition().y + 30));
 				// 移动和动画同时发生
 				auto my_spawn = Spawn::createWithTwoActions(animate, move_to);
-				// 执行Spawn动作
-				player->runAction(my_spawn);
+				auto seq = Sequence::create(my_spawn, func, nullptr);
+				player->runAction(seq);
 			}
 			else {	// 若出界，则只执行动画
-				player->runAction(animate);
+				auto seq = Sequence::create(animate, func, nullptr);
+				player->runAction(seq);
 			}
 			break;
 		case down:
 			if (player->getPosition().y - 30 > origin.y) {
 				auto move_to = MoveTo::create(0.3f, Vec2(player->getPosition().x, player->getPosition().y - 30));
 				auto my_spawn = Spawn::createWithTwoActions(animate, move_to);
-				player->runAction(my_spawn);
+				auto seq = Sequence::create(my_spawn, func, nullptr);
+				player->runAction(seq);
 			}
-			else {
-				player->runAction(animate);
+			else {	// 若出界，则只执行动画
+				auto seq = Sequence::create(animate, func, nullptr);
+				player->runAction(seq);
 			}
 			break;
 		case left:
 			if (player->getPosition().x - 30 > origin.x) {
 				auto move_to = MoveTo::create(0.3f, Vec2(player->getPosition().x - 30, player->getPosition().y));
 				auto my_spawn = Spawn::createWithTwoActions(animate, move_to);
-				player->runAction(my_spawn);
+				auto seq = Sequence::create(my_spawn, func, nullptr);
+				player->runAction(seq);
 			}
-			else {
-				player->runAction(animate);
+			else {	// 若出界，则只执行动画
+				auto seq = Sequence::create(animate, func, nullptr);
+				player->runAction(seq);
 			}
 			break;
 		case right:
 			if (player->getPosition().x + 30 < origin.x + visibleSize.width) {
 				auto move_to = MoveTo::create(0.3f, Vec2(player->getPosition().x + 30, player->getPosition().y));
 				auto my_spawn = Spawn::createWithTwoActions(animate, move_to);
-				player->runAction(my_spawn);
+				auto seq = Sequence::create(my_spawn, func, nullptr);
+				player->runAction(seq);
 			}
-			else {
-				player->runAction(animate);
+			else {	// 若出界，则只执行动画
+				auto seq = Sequence::create(animate, func, nullptr);
+				player->runAction(seq);
 			}
 			break;
 	}
