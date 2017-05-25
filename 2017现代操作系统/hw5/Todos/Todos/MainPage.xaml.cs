@@ -126,6 +126,7 @@ namespace Todos
         private void DataRequested(DataTransferManager sender, DataRequestedEventArgs e)
         {
             DataRequest request = e.Request;
+            
             request.Data.Properties.Title = ViewModel.SelectedItem.title;
             request.Data.Properties.Description = ViewModel.SelectedItem.description;
             request.Data.SetBitmap(Windows.Storage.Streams.RandomAccessStreamReference.CreateFromUri(

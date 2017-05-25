@@ -10,13 +10,13 @@
     <PackageArchitecture>x86</PackageArchitecture>
     <PackageIdentityName>3bc49445-c775-4a2d-870a-24f72a4c0c97</PackageIdentityName>
     <PackageIdentityPublisher>CN=NanXuan</PackageIdentityPublisher>
-    <IntermediateOutputPath>C:\Users\NanXuan\Desktop\Todos\Todos\obj\x86\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>D:\Workplace\Mint\2017现代操作系统\hw5\Todos\Todos\obj\x86\Debug\</IntermediateOutputPath>
     <RemoteDeploymentType>
     </RemoteDeploymentType>
     <PackageRegistrationPath>
     </PackageRegistrationPath>
     <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
-    <RegisteredManifestChecksum>D98A34DA8B432BB8F6B413018DDAD7E99C3E5A9AD922C363C7F1E7872C8E8B83</RegisteredManifestChecksum>
+    <RegisteredManifestChecksum>81CB91ADFE8AA91709CF4489BDD1A65EC9CA93FCADB912D1F48292D695F5CEDD</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>3bc49445-c775-4a2d-870a-24f72a4c0c97_1.0.0.0_x86__af2s7033s9tta</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>3bc49445-c775-4a2d-870a-24f72a4c0c97_af2s7033s9tta!App</RegisteredUserModeAppID>
     <RegisteredPackageID>3bc49445-c775-4a2d-870a-24f72a4c0c97</RegisteredPackageID>
@@ -25,16 +25,16 @@
     <JitOptimizationSuppressed>True</JitOptimizationSuppressed>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="C:\Users\NanXuan\Desktop\Todos\Todos\bin\x86\Debug\Core\AppxManifest.xml">
+    <AppXManifest Include="D:\Workplace\Mint\2017现代操作系统\hw5\Todos\Todos\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-03-27T03:57:00.138</Modified>
+      <Modified>2017-04-29T22:46:11.758</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="C:\Users\NanXuan\Desktop\Todos\Todos\bin\x86\Debug\Todos.exe">
+    <AppxPackagedFile Include="D:\Workplace\Mint\2017现代操作系统\hw5\Todos\Todos\bin\x86\Debug\Todos.exe">
       <PackagePath>entrypoint\Todos.exe</PackagePath>
-      <Modified>2017-03-27T03:56:59.502</Modified>
+      <Modified>2017-04-29T22:45:57.633</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\NanXuan\.nuget\packages\Microsoft.CSharp\4.0.0\lib\netcore50\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -452,77 +452,77 @@
       <PackagePath>System.Xml.XmlSerializer.dll</PackagePath>
       <Modified>2015-07-22T15:11:12.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\NanXuan\Desktop\Todos\Todos\Assets\background.jpg">
+    <AppxPackagedFile Include="D:\Workplace\Mint\2017现代操作系统\hw5\Todos\Todos\Assets\background.jpg">
       <PackagePath>Assets\background.jpg</PackagePath>
       <Modified>2015-03-13T06:04:11.333</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\NanXuan\Desktop\Todos\Todos\Assets\middleBackground.jpg">
+    <AppxPackagedFile Include="D:\Workplace\Mint\2017现代操作系统\hw5\Todos\Todos\Assets\middleBackground.jpg">
       <PackagePath>Assets\middleBackground.jpg</PackagePath>
       <Modified>2017-03-24T07:44:02.981</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\NanXuan\Desktop\Todos\Todos\Assets\smallBackground.jpg">
+    <AppxPackagedFile Include="D:\Workplace\Mint\2017现代操作系统\hw5\Todos\Todos\Assets\smallBackground.jpg">
       <PackagePath>Assets\smallBackground.jpg</PackagePath>
       <Modified>2017-03-24T07:06:32.206</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\NanXuan\Desktop\Todos\Todos\Assets\wideBackground.jpg">
+    <AppxPackagedFile Include="D:\Workplace\Mint\2017现代操作系统\hw5\Todos\Todos\Assets\wideBackground.jpg">
       <PackagePath>Assets\wideBackground.jpg</PackagePath>
       <Modified>2017-03-24T07:11:43.675</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\NanXuan\Desktop\Todos\Todos\Assets\middleBackground.png">
+    <AppxPackagedFile Include="D:\Workplace\Mint\2017现代操作系统\hw5\Todos\Todos\Assets\middleBackground.png">
       <PackagePath>Assets\middleBackground.png</PackagePath>
       <Modified>2017-03-24T07:59:24.961</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\NanXuan\Desktop\Todos\Todos\Assets\smallBackground.png">
+    <AppxPackagedFile Include="D:\Workplace\Mint\2017现代操作系统\hw5\Todos\Todos\Assets\smallBackground.png">
       <PackagePath>Assets\smallBackground.png</PackagePath>
       <Modified>2017-03-24T07:59:49.394</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\NanXuan\Desktop\Todos\Todos\Assets\wideBackground.png">
+    <AppxPackagedFile Include="D:\Workplace\Mint\2017现代操作系统\hw5\Todos\Todos\Assets\wideBackground.png">
       <PackagePath>Assets\wideBackground.png</PackagePath>
       <Modified>2017-03-24T08:00:02.480</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\NanXuan\Desktop\Todos\Todos\Assets\LockScreenLogo.scale-200.png">
+    <AppxPackagedFile Include="D:\Workplace\Mint\2017现代操作系统\hw5\Todos\Todos\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
       <Modified>2015-09-20T09:22:56.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\NanXuan\Desktop\Todos\Todos\Assets\SplashScreen.scale-200.png">
+    <AppxPackagedFile Include="D:\Workplace\Mint\2017现代操作系统\hw5\Todos\Todos\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2015-09-20T09:22:56.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\NanXuan\Desktop\Todos\Todos\Assets\Square150x150Logo.scale-200.png">
+    <AppxPackagedFile Include="D:\Workplace\Mint\2017现代操作系统\hw5\Todos\Todos\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2015-09-20T09:22:56.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\NanXuan\Desktop\Todos\Todos\Assets\Square44x44Logo.scale-200.png">
+    <AppxPackagedFile Include="D:\Workplace\Mint\2017现代操作系统\hw5\Todos\Todos\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2015-09-20T09:22:56.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\NanXuan\Desktop\Todos\Todos\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+    <AppxPackagedFile Include="D:\Workplace\Mint\2017现代操作系统\hw5\Todos\Todos\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2015-09-20T09:22:56.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\NanXuan\Desktop\Todos\Todos\Assets\StoreLogo.png">
+    <AppxPackagedFile Include="D:\Workplace\Mint\2017现代操作系统\hw5\Todos\Todos\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2015-09-20T09:22:56.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\NanXuan\Desktop\Todos\Todos\Assets\Wide310x150Logo.scale-200.png">
+    <AppxPackagedFile Include="D:\Workplace\Mint\2017现代操作系统\hw5\Todos\Todos\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2015-09-20T09:22:56.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\NanXuan\Desktop\Todos\Todos\Properties\Default.rd.xml">
+    <AppxPackagedFile Include="D:\Workplace\Mint\2017现代操作系统\hw5\Todos\Todos\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
       <Modified>2017-03-15T08:36:01.310</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\NanXuan\Desktop\Todos\Todos\title.xml">
+    <AppxPackagedFile Include="D:\Workplace\Mint\2017现代操作系统\hw5\Todos\Todos\title.xml">
       <PackagePath>title.xml</PackagePath>
       <Modified>2017-03-26T20:52:51.060</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\NanXuan\Desktop\Todos\Todos\bin\x86\Debug\Todos.xr.xml">
+    <AppxPackagedFile Include="D:\Workplace\Mint\2017现代操作系统\hw5\Todos\Todos\bin\x86\Debug\Todos.xr.xml">
       <PackagePath>Todos.xr.xml</PackagePath>
       <Modified>2017-03-26T21:45:39.405</Modified>
     </AppxPackagedFile>
@@ -530,14 +530,14 @@
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
       <Modified>2017-02-23T13:54:34.553</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\NanXuan\Desktop\Todos\Todos\bin\x86\Debug\resources.pri">
+    <AppxPackagedFile Include="D:\Workplace\Mint\2017现代操作系统\hw5\Todos\Todos\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-03-26T21:45:41.088</Modified>
+      <Modified>2017-04-29T22:46:08.774</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\NanXuan\Desktop\Todos\Todos\bin\x86\Debug\Core\Todos.exe">
+    <AppxPackagedFile Include="D:\Workplace\Mint\2017现代操作系统\hw5\Todos\Todos\bin\x86\Debug\Core\Todos.exe">
       <PackagePath>Todos.exe</PackagePath>
-      <Modified>2017-03-27T03:57:00.125</Modified>
+      <Modified>2017-04-29T22:46:11.727</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
