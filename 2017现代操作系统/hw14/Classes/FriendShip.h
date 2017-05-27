@@ -27,6 +27,8 @@ public:
   void GameOver();                      // 游戏结束
   void loadAnimation(string filepath); // 加载动画
 
+  PhysicsBody *getNearBox();
+
   // 重玩或退出按钮响应函数
   void replayCallback(Ref * pSender);
   void exitCallback(Ref * pSender);
@@ -37,6 +39,7 @@ public:
 private:
   PhysicsWorld* m_world;
   Size visibleSize;
+  Vec2 origin;
 
   Sprite* ship;
   list<PhysicsBody*> boxes;
@@ -48,20 +51,23 @@ private:
   Sprite* player1;
   Sprite* player2;
 
-  SpriteFrame* frame1;
-  SpriteFrame* frame2;
+  SpriteFrame* frame1;		// 玩家1初始正面
+  SpriteFrame* frame2;		// 玩家2初始正面
   SpriteFrame* IdleWithBox1;
   SpriteFrame* IdleWithBox2;
 
   // 固定距离关节, 用于举起箱子
   PhysicsJointDistance * joint1;
-
+  
   char LastPlayer1Press;
 
   bool IsPlayer1Hold;
   bool IsPlayer1Jump;
   bool IsPlayer1Left;
   bool IsPlayer1Right;
+
+  bool IsNearBox;
+  bool IsWantToHold;
 
   double deltaH;  // 每次更新的高度变化量
   double height;  // 左右高度差
