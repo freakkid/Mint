@@ -23,7 +23,11 @@ MAX_ITER: maximum number of iteration
 
 def find_root(f, fprime, x_0=1.0, EPSILON=1E-7, MAX_ITER=1000):
     for i in range(MAX_ITER):
-        x_0 = x_0 - f(x_0) / fprime(x_0)
+        x_1 = x_0 - f(x_0) / fprime(x_0)
+        print('i = ', i+1, ': ', x_0, '=>', x_1)
+        if abs(x_0 - x_1) < EPSILON:
+            break
+        x_0 = x_1        
     return x_0
 
 x = find_root(f, fprime)
