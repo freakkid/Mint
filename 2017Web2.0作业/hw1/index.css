@@ -1,0 +1,62 @@
+body { 
+    margin: 0;
+    background-color: #8443d6; 
+    width: 100%;
+    height: 55%；
+}
+
+/* animation of the upper half of the page */
+div {
+    padding: 150px;
+    background: #ffe900;
+    background-position: top center;
+    animation: changecolor;
+    animation-iteration-count: infinite;
+}
+
+@keyframes changecolor {
+    0% {background: #ffe900;}
+    25% {background: #bfb330;}
+    50% {background: #ffef40;}
+    100% {background: #fff373;}
+} 
+
+/* main heading as a hyperlink*/
+h1 {
+    color: #8443d6;
+    font-family: Georgia;
+    font-size: 60px;
+    font-weight: bold;
+    text-shadow: 0.1em 0.1em 0.15em #BA83FD;
+    text-align: center;
+}
+
+a:link { text-decoration: none; }
+
+a:hover {
+    text-decoration: underline;
+    font-size: 75px;
+}
+
+/* animation of text */
+p {
+    text-align: center;
+    font-size: 15pt;
+    font-family:  Georgia, Garamond, serif;
+    font-style: italic;
+    text-decoration: underline;
+    animation-duration: 3s;
+    animation-name: slidein;
+}
+
+@keyframes slidein {
+    from {
+        margin-left: 100%;
+        width: 100%;
+    }
+
+    to {
+        margin-left: 0%;
+        width: 100%;
+    }
+}

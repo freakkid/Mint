@@ -1,0 +1,43 @@
+/* all headings */
+h1, h2 {
+    color: #a4a400;
+    background-color: #f0f0f0;
+    font-family: Century Gothic, Futura, Verdana, sans-serif;
+    text-decoration: underline;
+}
+
+/* main headings */
+h1 {
+    text-align: center;
+    font-weight: bold;
+    font-size: 22pt;
+}
+
+/* secondary headings */
+h2 {
+    text-align: left;
+    font-weight: normal;
+    font-size: 18pt;
+}
+
+body {
+    background: white;
+    color: #404040;
+    font-size: 11pt;
+    font-family:  Georgia, Garamond, serif;
+}
+
+/* hyperlink at the bottom of the page */
+a {
+    color: #a4a400;
+}
+
+a.picturelink{
+    text-decoration: none;
+}
+
+/* quotations from the users */
+.quote {
+    font-style: italic;
+    background-color: #ffffc8;
+}
