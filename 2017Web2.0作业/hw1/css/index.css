@@ -1,0 +1,99 @@
+body { 
+    margin: 0;
+    background-color: #ffe900; 
+    width: 100%;
+    height: 55%；
+}
+
+/* animation of the upper half of the page */
+div {
+    padding: 150px;
+    background-position: top center;
+    /* 对将要用到的背景图进行缓存避免图片切换时出现闪烁 */
+    background-image: url(../img/0.jpg);
+    background-image: url(../img/01.jpg);
+    background-image: url(../img/02.jpg);
+    background-image: url(../img/03.jpg);
+    /*-------------------------------------------*/
+    /* 动画效果 */
+    animation: changeimage 12s;
+    animation-iteration-count: infinite;
+    -moz-animation: changeimage 7s;
+    -webkit-animation: changeimage 7s;
+    -o-animation: changeimage 7s;
+}
+
+@keyframes changeimage {
+    0% {background-image: url(../img/0.jpg);}
+    33% {background-image: url(../img/01.jpg);}
+    66% {background-image: url(../img/02.jpg);}    
+    100% {background-image: url(../img/03.jpg);}
+}
+
+@-moz-keyframes changeimage {
+    0% {background-image: url(../img/0.jpg);}
+    33% {background-image: url(../img/01.jpg);}
+    66% {background-image: url(../img/02.jpg);}    
+    100% {background-image: url(../img/03.jpg);}
+}
+@-webkit-keyframes changeimage {
+    0% {background-image: url(../img/0.jpg);}
+    33% {background-image: url(../img/01.jpg);}
+    66% {background-image: url(../img/02.jpg);}    
+    100% {background-image: url(../img/03.jpg);}
+}
+@-o-keyframes changeimage {
+    0% {background-image: url(../img/0.jpg);}
+    33% {background-image: url(../img/01.jpg);}
+    66% {background-image: url(../img/02.jpg);}    
+    100% {background-image: url(../img/03.jpg);}
+}
+
+/* main heading as a hyperlink*/
+h1 {
+    color: #8443d6;
+    font-family: Georgia;
+    font-size: 58px;
+    font-weight: bold;
+    text-shadow: 0.1em 0.1em 0.15em #BA83FD;
+    text-align: center;
+}
+
+h1:hover {
+    font-size: 60px;
+    text-decoration: underline;
+}
+
+a:link {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* animation of text */
+p {
+    text-align: center;
+    font-size: 15pt;
+    color: #8443d6;
+    font-family:  Georgia, Garamond, serif;
+    font-style: italic;
+    font-weight: bold;
+    animation-duration: 3s;
+    animation-name: slidein;
+}
+
+p:hover {
+    font-size: 16pt;
+    font-weight: bold;
+}
+
+@keyframes slidein {
+    from {
+        margin-left: 100%;
+        width: 100%;
+    }
+
+    to {
+        margin-left: 0%;
+        width: 100%;
+    }
+}
