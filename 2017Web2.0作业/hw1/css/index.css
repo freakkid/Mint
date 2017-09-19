@@ -2,7 +2,7 @@ body {
     margin: 0;
     background-color: #ffe900; 
     width: 100%;
-    height: 55%；
+    height: 55%;
 }
 
 /* animation of the upper half of the page */
@@ -16,33 +16,10 @@ div {
     background-image: url(../img/03.jpg);
     /*-------------------------------------------*/
     /* 动画效果 */
-    animation: changeimage 12s;
-    animation-iteration-count: infinite;
-    -moz-animation: changeimage 7s;
-    -webkit-animation: changeimage 7s;
-    -o-animation: changeimage 7s;
+    animation: changeimage 12s infinite;
 }
 
 @keyframes changeimage {
-    0% {background-image: url(../img/0.jpg);}
-    33% {background-image: url(../img/01.jpg);}
-    66% {background-image: url(../img/02.jpg);}    
-    100% {background-image: url(../img/03.jpg);}
-}
-
-@-moz-keyframes changeimage {
-    0% {background-image: url(../img/0.jpg);}
-    33% {background-image: url(../img/01.jpg);}
-    66% {background-image: url(../img/02.jpg);}    
-    100% {background-image: url(../img/03.jpg);}
-}
-@-webkit-keyframes changeimage {
-    0% {background-image: url(../img/0.jpg);}
-    33% {background-image: url(../img/01.jpg);}
-    66% {background-image: url(../img/02.jpg);}    
-    100% {background-image: url(../img/03.jpg);}
-}
-@-o-keyframes changeimage {
     0% {background-image: url(../img/0.jpg);}
     33% {background-image: url(../img/01.jpg);}
     66% {background-image: url(../img/02.jpg);}    
@@ -57,6 +34,7 @@ h1 {
     font-weight: bold;
     text-shadow: 0.1em 0.1em 0.15em #BA83FD;
     text-align: center;
+    transition: font-size 0.5s;
 }
 
 h1:hover {
@@ -79,11 +57,11 @@ p {
     font-weight: bold;
     animation-duration: 3s;
     animation-name: slidein;
+    transition: font-size 0.5s;
 }
 
 p:hover {
     font-size: 16pt;
-    font-weight: bold;
 }
 
 @keyframes slidein {
@@ -91,7 +69,6 @@ p:hover {
         margin-left: 100%;
         width: 100%;
     }
-
     to {
         margin-left: 0%;
         width: 100%;
