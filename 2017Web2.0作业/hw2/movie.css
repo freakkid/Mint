@@ -1,20 +1,3 @@
-header div {
-    background-image: url(http://my.ss.sysu.edu.cn/wiki/download/attachments/7045968/bannerbackground.png?version=1&modificationDate=1268896312000);
-    background-repeat: repeat-x;
-}
-
-.aligncenter {
-    clear: both;
-    display: block;
-    margin: auto;
-}
-
-h1 {
-    font-weight: bold;
-    font-size: 24pt;
-    font-family: Tahoma, Verdana, sans-serif;
-}
-
 body {
     background-image: url(http://my.ss.sysu.edu.cn/wiki/download/attachments/7045968/background.png?version=1&modificationDate=1268896312000);
     background-repeat: repeat;
@@ -23,15 +6,69 @@ body {
     margin: 0;
     padding: 0;
     background-color: #ebebeb;
+    height: 100%;
 }
 
-article {
-    margin: 0 auto;
+/* ------ main header ---- */
+header div {
+    background-image: url(http://my.ss.sysu.edu.cn/wiki/download/attachments/7045968/bannerbackground.png?version=1&modificationDate=1268896312000);
+    background-repeat: repeat-x;
+}
+
+.centerBanner {
+    clear: both;
+    display: block;
+    margin: auto;
+    height: 50px;
+}
+
+h1 {
+    font-weight: bold;
+    font-size: 24pt;
+    font-family: Tahoma, Verdana, sans-serif;
+    text-align: center;
+}
+/* -------------------------- */
+
+/* border setting */
+.contentBorder {   
+    margin-left: auto;
+    margin-right: auto;
     width: 800px;
     border: 4px solid gray;
+    overflow: hidden;
 }
 
-div.leftrotten {
+.hideOverflow {
+    overflow: hidden;
+}
+
+/* ------ overview on the right side ------ */
+aside {
+    background-color: #A2B964;
+    width: 250px;
+    overflow: hidden;
+    float: right;
+}
+
+dl {
+    margin: 0;
+    padding: 10px;
+    font-size: 8pt;
+    font-family: Arial, sans-serif;
+}
+
+dt {
+    font-weight: bold;
+}
+
+.marginBottom {
+    margin-bottom: 1em;
+}
+/* ---------------------------------- */
+
+/* ----- overall rating of 32% ------- */
+.leftTopRotten {
     background-image: url(http://my.ss.sysu.edu.cn/wiki/download/attachments/7045968/rottenbackground.png?version=1&modificationDate=1268896385000);
     background-color: black;
     background-repeat: repeat-x;
@@ -41,36 +78,86 @@ div.leftrotten {
     margin: auto;
 }
 
-div.rightoverview {
-    float: right;
-}
-
-.leftfloat {
-    float: left;
-}
-
-.rightfloat {
-    float: right;
-}
-
-.center {
-    text-align: center;
-}
-
-.redboldfont {
+.redBoldFont {
     font-size: 48pt;
     font-weight: bold;
     color: red;
-    line-height: 140%;
+    position: relative;
+    bottom: 10pt;
 }
 
-.whitestanderfont {
+.whiteStandarFont {
     font-size: 8pt;
     font-weight: normal;
     color: white;
+    position: relative;
+    bottom: 10pt;
+}
+/* --------------------------------- */
+
+/* --------- reviews setting -----*/
+.criticsReviews {
+    width: 550px;
+    overflow: hidden;
 }
 
-.aside {
+.reviewsColomn {
+    min-height: 100%;
+    width: 47%;
+    float: left;
+    display: block;
+    margin-left: 2%;
+}
+
+.review {
+    border: 2px solid gray;
+    padding: 8px;
+    font-size: 8pt;
+    font-weight: bold;
+    background-color: #e1d697;
+    overflow: hidden;
+}
+
+q {
+    font-size: 8pt;
+}
+
+.likeAndDislike {
+    float: left;
+    padding-right: 5px;
+}
+
+.reviewerInfo {
+    margin-bottom: 3em;
+    overflow: hidden;
+}
+
+.publication {
+    font-style: italic;
+}
+/* ------------------------------- */
+
+/* -------- footer setting ------- */
+.reviewsFooter {
     background-color: #A2B964;
+    width: 800px;
+    padding: 0;
+    margin: 0;
+}
+
+.footerFont {
+    text-align: center;
+    padding: 5px;
+    width: 100%;
+    margin: 0;
+}
+/* ------------------------------- */
+
+/* w3c icons fix on the bottom roght corner*/
+.w3cIcon {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    float: right;
 }
 
