@@ -14,7 +14,7 @@ header > div {
   background-repeat: repeat-x;
 }
 
-.centerBanner {
+.center-banner {
   clear: both;
   display: block;
   height: 50px;
@@ -29,7 +29,7 @@ h1 {
 /* -------------------------- */
 
 /* border setting */
-.contentBorder {   
+.content-border {   
   border: 4px solid gray;
   margin-left: auto;
   margin-right: auto;
@@ -37,7 +37,7 @@ h1 {
   width: 800px;
 }
 
-.hideOverflow {
+.hide-overflow {
   overflow: hidden;
 }
 
@@ -71,7 +71,7 @@ dd {
 /* ---------------------------------- */
 
 /* ----- overall rating of 32% ------- */
-.leftTopRotten {
+.left-top-rotten {
   background-color: black;
   background-image: url(http://my.ss.sysu.edu.cn/wiki/download/attachments/7045968/rottenbackground.png?version=1&modificationDate=1268896385000);
   background-repeat: repeat-x;
@@ -81,7 +81,7 @@ dd {
   width: 550px;
 }
 
-.redBoldFont {
+.red-bold-font {
   bottom: 10pt;
   color: red;
   font-size: 48pt;
@@ -89,7 +89,7 @@ dd {
   position: relative;
 }
 
-.whiteStandarFont {
+.white-standar-font {
   bottom: 10pt;
   color: white;
   font-size: 8pt;
@@ -99,12 +99,12 @@ dd {
 /* --------------------------------- */
 
 /* --------- reviews setting -----*/
-#criticsReviews {
+#critics-reviews {
   width: 550px;
   overflow: hidden;
 }
 
-.reviewsColomn {
+.reviews-colomn {
   display: block;
   float: left;
   margin-left: 2%;
@@ -121,16 +121,16 @@ dd {
   padding: 8px;
 }
 
-q {
+.review > q {
   font-size: 8pt;
 }
 
-.likeAndDislike {
+.reviewer-info > img{
   float: left;
   padding-right: 5px;
 }
 
-.reviewerInfo {
+.reviewer-info {
   margin-bottom: 3em;
   overflow: hidden;
 }
@@ -141,14 +141,14 @@ q {
 /* ------------------------------- */
 
 /* -------- footer setting ------- */
-#reviewsFooter {
+#reviews-footer {
   background-color: #A2B964;
   margin: 0;
   padding: 0;
   width: 800px;
 }
 
-.footerFont {
+.footer-font {
 text-align: center;
   padding: 5px;
   width: 100%;
@@ -156,8 +156,8 @@ text-align: center;
 }
 /* ------------------------------- */
 
-/* w3c icons fix on the bottom roght corner*/
-.w3cIcon {
+/* w3c icons fix on the bottom roght corner */
+.w3c-icon {
   bottom: 0;
   float: right;
   position: fixed;
