@@ -1,12 +1,11 @@
 body {
+  background-color: #ebebeb;
   background-image: url(http://my.ss.sysu.edu.cn/wiki/download/attachments/7045968/background.png?version=1&modificationDate=1268896312000);
   background-repeat: repeat;
-  font-size: 8pt;
-  font-family: Verdana, Tahoma, sans-serif;
+  font: 8pt Verdana, Tahoma, sans-serif;
+  height: 100%;
   margin: 0;
   padding: 0;
-  background-color: #ebebeb;
-  height: 100%;
 }
 
 /* ------ main header ---- */
@@ -18,25 +17,24 @@ header > div {
 .centerBanner {
   clear: both;
   display: block;
-  margin: auto;
   height: 50px;
+  margin: auto;
 }
 
 h1 {
-  font-weight: bold;
   font-size: 24pt;
-  font-family: Tahoma, Verdana, sans-serif;
+  font: bold Tahoma, Verdana, sans-serif;
   text-align: center;
 }
 /* -------------------------- */
 
 /* border setting */
 .contentBorder {   
+  border: 4px solid gray;
   margin-left: auto;
   margin-right: auto;
-  width: 800px;
-  border: 4px solid gray;
   overflow: hidden;
+  width: 800px;
 }
 
 .hideOverflow {
@@ -46,16 +44,16 @@ h1 {
 /* ------ overview on the right side ------ */
 #right-aside {
   background-color: #A2B964;
-  width: 250px;
-  overflow: hidden;
   float: right;
+  overflow: hidden;
+  width: 250px;
 }
 
 dl {
+  font-family: Arial, sans-serif;
+  font-size: 8pt;
   margin: 0;
   padding: 10px;
-  font-size: 8pt;
-  font-family: Arial, sans-serif;
 }
 
 dt {
@@ -74,29 +72,29 @@ dd {
 
 /* ----- overall rating of 32% ------- */
 .leftTopRotten {
-  background-image: url(http://my.ss.sysu.edu.cn/wiki/download/attachments/7045968/rottenbackground.png?version=1&modificationDate=1268896385000);
   background-color: black;
+  background-image: url(http://my.ss.sysu.edu.cn/wiki/download/attachments/7045968/rottenbackground.png?version=1&modificationDate=1268896385000);
   background-repeat: repeat-x;
   float: left;
   height: 83px;
-  width: 550px;
   margin: auto;
+  width: 550px;
 }
 
 .redBoldFont {
+  bottom: 10pt;
+  color: red;
   font-size: 48pt;
   font-weight: bold;
-  color: red;
   position: relative;
-  bottom: 10pt;
 }
 
 .whiteStandarFont {
+  bottom: 10pt;
+  color: white;
   font-size: 8pt;
   font-weight: normal;
-  color: white;
   position: relative;
-  bottom: 10pt;
 }
 /* --------------------------------- */
 
@@ -107,20 +105,20 @@ dd {
 }
 
 .reviewsColomn {
+  display: block;
+  float: left;
+  margin-left: 2%;
   min-height: 100%;
   width: 47%;
-  float: left;
-  display: block;
-  margin-left: 2%;
 }
 
 .review {
+  background-color: #e1d697;
   border: 2px solid gray;
-  padding: 8px;
   font-size: 8pt;
   font-weight: bold;
-  background-color: #e1d697;
   overflow: hidden;
+  padding: 8px;
 }
 
 q {
@@ -145,9 +143,9 @@ q {
 /* -------- footer setting ------- */
 #reviewsFooter {
   background-color: #A2B964;
-  width: 800px;
-  padding: 0;
   margin: 0;
+  padding: 0;
+  width: 800px;
 }
 
 .footerFont {
@@ -160,9 +158,9 @@ text-align: center;
 
 /* w3c icons fix on the bottom roght corner*/
 .w3cIcon {
-  position: fixed;
   bottom: 0;
-  right: 0;
   float: right;
+  position: fixed;
+  right: 0;
 }
 
