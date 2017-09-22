@@ -23,7 +23,9 @@ header > div {
 
 h1 {
   font-size: 24pt;
-  font: bold Tahoma, Verdana, sans-serif;
+  /* font: bold Tahoma, Verdana, sans-serif; */
+  font-family: Tahoma, Verdana, sans-serif;
+  font-weight: bold;
   text-align: center;
 }
 /* -------------------------- */
@@ -119,6 +121,11 @@ dd {
   font-weight: bold;
   overflow: hidden;
   padding: 8px;
+}
+
+.review > img {
+  float: left;
+  margin-right: 5px;
 }
 
 .review > q {
