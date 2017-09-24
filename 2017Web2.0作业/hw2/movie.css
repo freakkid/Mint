@@ -166,7 +166,6 @@ text-align: center;
 /* w3c icons fix on the bottom roght corner */
 .w3c-icon {
   bottom: 0;
-  float: right;
   position: fixed;
   right: 0;
 }
