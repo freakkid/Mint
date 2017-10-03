@@ -1,0 +1,296 @@
+/* ----------------genenral settings----------------- */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+#at-plus-container {
+    margin-left: auto;
+    margin-right: auto;
+    height: 100%;
+    width: 180px;
+}
+
+#bottom-positioner {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 290%;
+    height: 100%;
+    width: 100%;
+}
+/* ------------------ /genenral settings-------------------- */
+
+/* for hovering */
+#button {
+    position: relative;
+    height: 40px;
+    width: 40px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ------------ at plus button---------------- */
+.apb {
+    position: absolute;
+    bottom: 10%;
+    left: 0;
+    right: 0;
+    width: 27px;
+    height: 27px;
+    margin-left: auto;
+    margin-right: auto;
+    background: rgb(152, 159, 207) url(assets/images/atplus_white.png) no-repeat center;
+    background-size: 21px 15px;
+    border-radius: 50%;
+    transition: all 0.5s;
+    transform-origin: center center;
+}
+
+#button:hover .apb {
+    position: absolute;
+    bottom: 7%;
+    left: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    background: rgba(48, 63, 159, 1) url(assets/images/atplus_green.png) no-repeat center;
+    background-size: 33px 22px;
+    border-radius: 50%;
+    transform-origin: center center;
+}
+/* ----------------- /at plus button ----------------- */
+
+/* --------------- info-bar settings ------------------ */
+#info-bar {
+    position: absolute;
+    left: 5%;
+    right: 0;
+    top: 66%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 22px;
+    height: 22px;
+    background-color: gray;
+    border-radius: 50%;
+    transition: all 0.5s;
+    opacity: 0;
+}
+
+#button:hover #info-bar {
+    position: absolute;
+    left: -40px;
+    right: 0;
+    top: -150px;
+    margin-right: auto;
+    margin-left: auto;
+    width: 130px;
+    height: 130px;
+    background-color: gray;
+    border-radius: 50%;
+    opacity: 1;
+}
+
+#info-bar li {
+    list-style: none;
+}
+
+.info {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#info-bar .page {
+    color: white;
+}
+
+#info-bar .mine {
+    color: #079e6e;
+    position: absolute;
+    top: 68%;
+    font-size: 17px;
+    font-weight: bold;
+    float: left;
+}
+
+#info-bar .user {
+    position: absolute;
+    top: 6%;
+    font-size: 16px;
+}
+
+#info-bar .user img {
+    position: relative;
+}  
+
+#info-bar .user span {
+    position: absolute;
+    left: 150%;
+    top: 20%;
+}
+
+#info-bar .comment {
+    position: absolute;
+    top: 30%;
+    font-size: 30px;
+}
+
+#info-bar .comment img {
+    position: absolute;
+    margin-top: 10px;
+}
+
+#info-bar .comment span {
+    position: absolute;
+    margin-left: 30px;
+}
+
+#info-bar .mine img {
+    height: 22px;
+    width: 22px;
+}
+
+#info-bar .posted img {
+    position: absolute;
+    right: 80%;
+}
+
+#info-bar .posted span {
+    position: relative;
+    left: 90%;
+}
+
+#info-bar .like img {
+    position: absolute;
+    left: 270%;
+}
+
+#info-bar .like span {
+    position: relative;
+    left: 550%;
+}
+/* --------------- /info-bar settings ------------------ */
+
+/* ---------------- control-ring setting---------------------- */
+#control-ring-container {
+    position: absolute;
+    left: 37%;
+    bottom: 10%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    opacity: 0;
+    transition: all 0.5s;
+}
+
+#button:hover #control-ring-container {
+    opacity: 1;
+}
+
+#control-ring-container li {
+    list-style: none;
+}
+
+#control-ring .button {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+}
+
+#button:hover #control-ring .button {
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+}
+
+#control-ring .mask {
+    position: absolute;
+    left: -7px;
+    bottom: 10px;
+    transition: all 0.5s;    
+}
+
+#button:hover #control-ring .mask {
+    position: absolute;
+    left: -70px;
+    bottom: 170%;
+    background: #5A5A5A url('assets/images/nomask.png') no-repeat center;
+    background-size: 19px 18px;
+}
+
+#control-ring .history {
+    position: absolute;
+    right: 15px;
+    bottom: 5px;
+    transition: all 0.5s;
+}
+
+#button:hover #control-ring .history {
+    position: absolute;
+    right: 280%;
+    bottom: 0;
+    background: #5A5A5A url('assets/images/history.png') no-repeat center;    
+    background-size: 19px 18px;
+}
+
+#control-ring .message {
+    position: absolute;
+    right: 15px;
+    top: 7px;
+    transition: all 0.5s;
+}
+
+#button:hover #control-ring .message {
+    position: absolute;
+    right: 230%;
+    top: 150%;
+    background: #5A5A5A url('assets/images/message.png') no-repeat center;    
+    background-size: 19px 18px;
+}
+
+#control-ring .setting {
+    position: absolute;
+    right: 10px;
+    top: 30%;
+    transition: all 0.5s;
+}
+
+#button:hover #control-ring .setting {
+    position: absolute;
+    right: 80%;
+    top: 270%;
+    background: #5A5A5A url('assets/images/setting.png') no-repeat center;    
+    background-size: 19px 18px;
+}
+
+#control-ring .sign {
+    position: absolute;
+    right: 4px;
+    top: 30%;
+    transition: all 0.5s;
+}
+
+#button:hover #control-ring .sign {
+    position: absolute;
+    right: -120%;
+    top: 270%;
+    background: #5A5A5A url('assets/images/signin.png') no-repeat center;
+    background-size: 19px 18px;
+}
+
+#control-ring li span.unread {
+    position: relative;
+    left: 70%;
+    bottom: 20%;
+    padding-left: 21%;
+    height: auto;
+    width: auto;
+    border-radius: 50%;
+    background-color: red;
+    letter-spacing: 7px;
+    color: white;
+}
+/* ---------------- /control-ring setting---------------------- */
