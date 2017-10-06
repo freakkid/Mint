@@ -143,19 +143,13 @@ def get_PC1_subkey(K):
     """
     对64位的k进行压缩置换得到56位
     """
-    subK = []
-    for i in PC1:
-        subK.append(K[i-1])
-    return subK
+    return [K[i-1] for i in PC1]
 
 def get_PC2_subkey(K):
     """
     对56位的k进行压缩置换得到48位
     """
-    subK = []
-    for i in PC2:
-        subK.append(K[i-1])
-    return subK
+    return [K[i-1] for i in PC2]
 
 def move_onebit_subkey(K):
     """
