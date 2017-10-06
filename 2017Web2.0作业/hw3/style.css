@@ -44,8 +44,9 @@ body {
     background: rgb(152, 159, 207) url(assets/images/atplus_white.png) no-repeat center;
     background-size: 21px 15px;
     border-radius: 50%;
-    transition: all 0.5s;
+    transition: all 0.5s 0.5s;
     transform-origin: center center;
+    
 }
 
 #button:hover .apb {
@@ -59,6 +60,7 @@ body {
     background-size: 33px 22px;
     border-radius: 50%;
     transform-origin: center center;
+    transition: all 0.5s;
 }
 /* ----------------- /at plus button ----------------- */
 
@@ -67,7 +69,7 @@ body {
     position: absolute;
     left: 5%;
     right: 0;
-    top: 66%;
+    top: 10%;
     margin-left: auto;
     margin-right: auto;
     width: 22px;
@@ -78,7 +80,8 @@ body {
     opacity: 0;
 }
 
-#button:hover #info-bar {
+#button:hover 
+#info-bar {
     position: absolute;
     left: -40px;
     right: 0;
@@ -92,14 +95,33 @@ body {
     opacity: 1;
 }
 
+#info-bar .info {
+    position: absolute;
+    left: -60%;
+    top: -40%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 40px;
+    width: 40px;
+    opacity: 0;
+    transition: all 0.5s;
+}
+
+#button:hover #info-bar .info {
+    position: absolute;
+    left: 0;
+    top: 10%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100px;
+    width: 100px;
+    opacity: 1;
+}
+
 #info-bar li {
     list-style: none;
 }
 
-.info {
-    margin-left: auto;
-    margin-right: auto;
-}
 
 #info-bar .page {
     color: white;
