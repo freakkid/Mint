@@ -1,9 +1,11 @@
-#！usr/bin/env python
+#! usr/bin/env python3
 # -*- coding:utf-8 -*-
 """
 DES算法
 """
 import random
+from functools import reduce
+from itertools import chain
 
 # 初始置换IP
 IP = [58, 50, 42, 34, 26, 18, 10, 2, 
@@ -84,7 +86,9 @@ PC2 = [14, 17, 11, 24, 1, 5,
        44, 49, 39, 56, 34, 53,
        46, 42, 50, 36, 29, 32]
 
-EXTENDED_RULE_TABLE = [[32, 5], [4, 9], [8, 13], [12, 17], [16, 21], [20, 25], [24, 29], [28, 1]]
+# E-扩展
+EXTENDED_RULE_TABLE = [[32, 5], [4, 9], [8, 13], [12, 17], 
+                    [16, 21], [20, 25], [24, 29], [28, 1]]
 
 P = [16, 7, 20, 21,
      29, 12, 28, 17,
@@ -166,7 +170,8 @@ def move_twobit_subkey(K):
 SUBKEYS = []        # 子密钥集合
 def general_subkeys(K):
     """
-    生成子密钥
+    生成子密钥集合
+    @K: 给定的密钥
     """
     HALF_SUBKEY_LENGTH = 28
     # 64位K通过PC-2表压缩成56位
@@ -189,47 +194,35 @@ def get_subkey(i):
 
 def S_box_substitution(R_group, S_BOX):
     """
-    S盒替换 R_group6位输入
+    S盒替换
+    @R_group:6位二进制数组b0b1b2b3b4b5
+    输出为 “S-盒[(b0b5)10][(b1b2b3b4)10]” 的4位二进制表示
     """
-    row = (R_group[0] << 1) + R_group[5]
-    col = 0
-    for i in range(3, 6):
-        col = (col << 1) + R_group[i]
+    row = (R_group[0] << 1) + R_group[5] # 行：b0b5 的十进制
 
-    demical_output = S_BOX[row * S_BOX_COLS + col]
-    binary_output = []
-    BINARY_OUTPUT_LEN = 4
-    # 10进制转成4位二进制
-    for i in range(BINARY_OUTPUT_LEN - 1, -1, -1):
-        if demical_output - 2 ** BINARY_OUTPUT_LEN >= 0:
-            binary_output.append(1)
-            demical_output -= 2 ** BINARY_OUTPUT_LEN
-        else:
-            binary_output.append(0)
+    def cal_binlist(x, y):
+        return x * 2 + y
+    col = reduce(cal_binlist, R_group[3:7]) # 列：b1b2b3b4 的十进制
+
+    demical_output = S_BOX[row * S_BOX_COLS + col] # 获得S-盒对应的数字
     
-    return binary_output
+    # S-盒对应的10进制数字转成4位二进制list
+    return list(map(lambda x: int(x), list(bin(demical_output)[2:].zfill(4))))
 
-# Ri-1, Ki
 def feistel(R, i):
     """
     feistel轮函数，R为长度为32位的Ri-1，i为迭代第i次
     """
     # 1 - 长度为32位的Ri-1作E-扩展，作为48位的串E(Ri-1)
     # 2 - 将E(Ri-1)和长度为48位的子密钥Ki作48位二进制串按位异或运算
-    
     t_R = exclsive_or(E_extended(R), get_subkey(i))
     # 3 - 将2得到的结果分成8个长度为6的分组，经过8个不同的S-盒
     #     进行6-4转换，得到8个长度分别为4位的分组
     # 4 - 将分组结果合并成长度为32位的串
     GROUP_LEN = 6
-    thiry_two_bit_R = []
-    # print("t_R", t_R)
-    for i in range(S_BOX_NUM):
-        thiry_two_bit_R += S_box_substitution(t_R[GROUP_LEN * i : GROUP_LEN * (i + 1)], S_BOXS[i])
-        # print(thiry_two_bit_R)
-    
     # 5 - 把32位的串进行P-置换
-    return permutate_by_P(thiry_two_bit_R)
+    return permutate_by_P(list(chain(*[S_box_substitution(
+                t_R[GROUP_LEN * i : GROUP_LEN * (i + 1)], S_BOXS[i]) for i in range(S_BOX_NUM)])))
 
 
 def DES_encryption_or_decryption(text, secret_key, is_decrypt):
@@ -257,9 +250,18 @@ def DES_encryption_or_decryption(text, secret_key, is_decrypt):
 
 def random_generated_key():
     """
-    随机产生0~1大小的随机数四舍五入获得0和1，得到密钥list
+    随机产生0~1大小的随机数四舍五入获得0和1，得到64位密钥list
     """
     return [round(random.random()) for i in range(64)]
+
+def binlist_to_hexlist(binlist):
+    """
+    把生成的二进制密文转成可读的十六进制字符串
+    @binlist: 二进制列表
+    """
+    def cal_binlist(x, y):
+        return x * 2 + y
+    return [hex(reduce(cal_binlist, binlist[i * 4 : (i + 1) * 4]))[2:] for i in range(len(binlist) // 4)]
 
 # 测试加密
 def encrypt_test():
@@ -299,16 +301,23 @@ def encrypt_test():
         fout.write(''.join(list(map(lambda x: str(x), secret_key))))
     #-------------------------------------------------------------
 
-    # ---------------对二进制list进行每次分64位进行加密------------------
+    # ---------------对二进制list进行每次分64位进行加密再转成16进制可读字符串------------------
     ciphertext = []
     for i in range(int(len(bin_list) / 64)):        
         t = DES_encryption_or_decryption(bin_list[i * 64 : (i + 1) * 64], secret_key, 0)
         ciphertext += t
+    # 转成16进制可读字符串
     # 将密文保存进文件中
-    with open("ciphertext.txt", "w") as fout:
-        for i in ciphertext:
-            fout.write(str(i))
+    with open("ciphertext.txt", "w", encoding="utf-8") as fout:
+        fout.write(''.join(binlist_to_hexlist(ciphertext)))
     # ----------------------------------------------------------------
+
+def hexstr_to_binstrlist(hexstr):
+    """"
+    把十六进制字符串转换成二进制字符串list
+    @hexstr:十六进制字符串
+    """
+    return list(chain(*[list((bin(int(i, 16))[2:]).zfill(4)) for i in hexstr]))
 
 # 测试解密
 def decrypt_test():
@@ -323,7 +332,7 @@ def decrypt_test():
         secret_key = list(map(lambda x: int(x), list(fin.read())))
     
     with open("ciphertext.txt", "r") as fin:
-        ciphertext = list(map(lambda x: int(x), list(fin.read())))
+        ciphertext = list(map(lambda x: int(x), hexstr_to_binstrlist(fin.read())))
     # ----------------------------------------------------------------
 
     # ------------------每次分64位进行解密获得二进制list--------------------
@@ -346,7 +355,6 @@ def decrypt_test():
         else:
             hex_list = hex_list[:-end_num]
     
-    # print(bytearray(hex_list).decode("utf-8"))
     with open("result.txt", "w", encoding="utf-8") as fout:
         fout.write(bytearray(hex_list).decode("utf-8"))
     # ----------------------------------------------------------------
@@ -360,6 +368,20 @@ def test1():
     # ['11100100', '10111101', '10100000', '11100101', '10100101', '10111101']
     e = list(map(lambda x: int(hex(int(x, 2)), 16), d))
     # [228, 189, 160, 229, 165, 189]
+
+def test2():
+    key = [1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 1, 1, 0]
+    text = [0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0]
+    result = DES_encryption_or_decryption(text, key, 0)
+    print(result)
+    result1 = DES_encryption_or_decryption(result, key, 1)
+    for i in range(len(result)):
+        if text[i] != result1[i]:
+            print("Error!")
+            break
+    print("密文 ", result)
+    
+        
 
 if __name__ == "__main__":
     encrypt_test()
