@@ -17,3 +17,5 @@
         ```
 + [plain_text.txt](plain_text.txt)
     该文件放置待加密文字，默认放置的是霹雳布袋戏人物魔王子的中文语录和马丁路德金的《I have a dream》演讲稿英文。
+
++ PS：Emmmm如果需要下载代码，点进对应的文件，点击文件右上方的   **Raw** ，再Ctrl + A,Ctrl + C复制即可
