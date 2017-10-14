@@ -214,8 +214,20 @@ func process_args(ac int, av []string, sp_args *Selpg_args) {
 	fmt.Printf("in_filename = %s\n", sp_args.in_filename)
 }
 
+func check_is_error(e error) {
+	return e != nil
+}
+
 func process_input(sp_args Selpg_args) {
-	
+	var f* File
+	if (sp_args.in_filename != EMPTY_STRING) {
+		f, err := os.Open(sp_args.in_filename)
+		if check_is_error(err) {
+			file_err_exit(NOT_OPEN_INPUT_FILE, sp_args.in_filename)
+		}
+	} else {
+		
+	}
 }
 
 func main() {
