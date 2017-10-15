@@ -215,6 +215,7 @@ func process_args(ac int, av []string, sp_args *Selpg_args) {
 	fmt.Printf("print_dest = %s\n", sp_args.print_dest)
 	fmt.Printf("in_filename = %s\n", sp_args.in_filename)
 	fmt.Printf("===")
+	
 }
 
 func process_input(sp_args Selpg_args) {
