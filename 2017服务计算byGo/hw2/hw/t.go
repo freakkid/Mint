@@ -3,18 +3,20 @@ package main
 import (
     "fmt"
 	"os"
+	"os/exec"
 	"strings"
 	"strconv"
 	"math"
 	"io/ioutil"
+	"bytes"
 )
 
 type ERROR_TYPE int
 
 const (
 	EMPTY_STRING = ""
-	F = 'f'
-	L = 'l'
+	F byte = 'f'
+	L byte = 'l'
 )
 
 // 错误类型的枚举
@@ -32,7 +34,7 @@ const  (
 	NOREADALE_INPUT_FILE		// 11
 	NOT_OPEN_INPUT_FILE			// 12
 	NOT_OPEN_PIPE				// 13
-	INPUT_STREAM_ERROR			// 14
+	// INPUT_STREAM_ERROR			// 14
 	S_PAGE_GREATER_TOTAL_PAGES	// 15
 	E_PAGE_GREATER_TOTAL_PAGES	// 16
 	OTHER_ERRS					// 17
@@ -53,7 +55,7 @@ var ERROR_MSG = map[ERROR_TYPE] string {
 	NOREADALE_INPUT_FILE: "%s: input file \"%s\" exists but cannot be read\n",
 	NOT_OPEN_INPUT_FILE: "%s: could not open input file \"%s\"\n",
 	NOT_OPEN_PIPE: "%s: could not open pipe to \"%s\"\n",
-	INPUT_STREAM_ERROR: "%s: system error [%s] occurred on input stream fin\n",
+	// INPUT_STREAM_ERROR: "%s: system error [%s] occurred on input stream fin\n",
 	S_PAGE_GREATER_TOTAL_PAGES: "%s: start_page (%d) greater than total pages (%d) no output written\n",
 	E_PAGE_GREATER_TOTAL_PAGES: "%s: end_page (%d) greater than total pages (%d), less output than expected\n",
 }
@@ -66,7 +68,7 @@ type Selpg_args struct {	// 参数结构
 	end_page int
 	in_filename string
 	page_len int
-	page_type rune
+	page_type byte
 	print_dest string
 }
 
@@ -101,7 +103,7 @@ func file_err_exit(error_type ERROR_TYPE, file_name string) {
 }
 
 // 页数出错
-func page_err_exit(error_type ERROR_TYPE, sa_page int, page_ctr int) {
+func page_ctr_err(error_type ERROR_TYPE, sa_page int, page_ctr int) {
 	fmt.Fprintf(os.Stderr, ERROR_MSG[error_type], progname, sa_page, page_ctr)
 }
 
@@ -212,22 +214,107 @@ func process_args(ac int, av []string, sp_args *Selpg_args) {
 	fmt.Printf("page_type = %c\n", sp_args.page_type)
 	fmt.Printf("print_dest = %s\n", sp_args.print_dest)
 	fmt.Printf("in_filename = %s\n", sp_args.in_filename)
-}
-
-func check_is_error(e error) {
-	return e != nil
+	fmt.Printf("===")
 }
 
 func process_input(sp_args Selpg_args) {
-	var f* File
-	if (sp_args.in_filename != EMPTY_STRING) {
-		f, err := os.Open(sp_args.in_filename)
-		if check_is_error(err) {
+	// var fin *os.File		// nil
+	var fin *bufio.Reader
+	var fout *bufio.Writer
+	var stdinpipe io.WriteCloser
+	var cmd *exec.Cmd
+
+	fmt.Printf("===")
+	// 从命令行或文件输入
+	if (sp_args.in_filename != EMPTY_STRING) {	// 文件输入
+		f, err := os.Open(sp_args.in_filename)	// 打开文件
+		if err != nil {
 			file_err_exit(NOT_OPEN_INPUT_FILE, sp_args.in_filename)
 		}
-	} else {
-		
+		fin = bufio.NewReader(f)
+	} else {			// 键盘输入
+		fin = bufio.NewReader(os.Stdin)
 	}
+
+	// 输出到打印机或屏幕
+	if sp_args.print_dest != EMPTY_STRING {
+		var dest_flag string = fmt.Sprintf("-d%s", sp_args.print_dest)
+		cmd := exec.Command("lp", dest_flag)
+		stdin, err := cmd.StdinPipe()
+		if err != nil {
+			panic(err)
+		}
+		stdinpipe = stdin
+		fout = bufio.NewWriter(stdin)
+		err := cmd.Run()
+		if err != nil {
+			file_err_exit(NOT_OPEN_PIPE, fmt.Sprintf("lp %s", dest_flag))
+		}
+	} else {
+		fout = bufio.NewWriter(os.Stdout)
+	}
+	
+	var page_ctr int = 1	// 页数/开始打印第一页
+	// 检测页类型
+	if sp_args.page_type == 'l' {
+		var line_ctr int = 0	// 行数
+		for true {
+			// 读取输入，知道遇到换行符
+			crc, err := fin.ReaderString('\n')
+			// 处理err信息
+			if err == io.EOF {
+				break
+			} else if err != nil {
+				panic(err)
+			}
+			line_ctr++		// 行数增加
+			if line_ctr > sp_args.page_len {// 超过页长度
+				page_ctr++;		// 增加一页
+				line_ctr = 1
+			}
+			// 页数在指定范围内则输出
+			if page_ctr >= sp_args.start_page && page_ctr <= sp_args.end_page {
+				_, err: fout.Write([]byte(crc))
+				if err != nil {
+					panic(err)
+				}
+				fout.Flush()
+			}
+		}
+	} else {
+		for true {
+			input_byte, err := fin.ReadByte()
+			if err == io.EOF {
+				break
+			} else if err != nil {
+				panic(err)
+			}
+			if input_byte == '\f' {	// 换页走纸
+				page_ctr++
+			}
+			// 页数在指定范围内则输出
+			if page_ctr >= sa.start_page && page_ctr <= end_page {
+				err := fout.WriteByte(input)
+				if err != nil {
+					panic(err)
+				}
+				fout.Flush()
+			}
+		}
+	}
+	if page_ctr < sp_args.start_page {
+		page_ctr_err(sp_args.start_page, page_ctr)
+	} else if page_ctr < sp_args.end_page {
+		page_ctr_err(sp_args.end_page, page_ctr)
+	}
+	// 正常EOF 没有出错
+	fout.Flush()
+	fin.Close()
+	if (sp_args.print_dest != EMPTY_STRING) {
+		stdinpipe.Close()	// 关闭管道
+	}
+	fmt.Printf(os.Stderr, "%s: done\n", progname)
+
 }
 
 func main() {
@@ -236,6 +323,7 @@ func main() {
 	progname = os.Args[0][strings.LastIndex(os.Args[0], string(os.PathSeparator)) + 1:]
 	
 	process_args(len(os.Args), os.Args, &sp_args)
+	fmt.Printf("===")
 	process_input(sp_args)
 	os.Exit(0)
 }
