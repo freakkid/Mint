@@ -1,6 +1,6 @@
 # CLI 命令行实用程序开发基础 #
 
-* 本次作业根据进行[开发 Linux 命令行实用程序](https://www.ibm.com/developerworks/cn/linux/shell/clutil/index.html)开发
+* 本次作业根据[开发 Linux 命令行实用程序](https://www.ibm.com/developerworks/cn/linux/shell/clutil/index.html)进行开发
 
 * 测试工具
 
@@ -8,18 +8,18 @@
 
         [PDF printer for CUPS](https://apps.ubuntu.com/cat/applications/lucid/cups-pdf/)
 
-    +　由[gen_data.go](data/gen_data.go)生成的供测试两种换页类型的输入文件：
+    + 由[gen_data.go](data/gen_data.go)生成的供测试两种换页类型的输入文件：
 
-    - [l_input_file](data/l_input_file)：由1000个"line i hello world\n"(1<=i<=1000)语句组成
-    
-    - [f_input_file](data/f_input_file)：由1000个"page i hello world\f"(1<=i<=1000)语句组成
-
-    - [gen_data.go](data/gen_data.go)用法：
+        - [l_input_file](data/l_input_file)：由1000个"line i hello world\n"(1<=i<=1000)语句组成
         
-        ```
-        $ go build gen_data.go
-        $ ./gen_data
-        ```
+        - [f_input_file](data/f_input_file)：由1000个"page i hello world\f"(1<=i<=1000)语句组成
+
+        - [gen_data.go](data/gen_data.go)用法：
+            
+            ```
+            $ go build gen_data.go
+            $ ./gen_data
+            ```
 
 * 命令行输入
 
