@@ -1,0 +1,191 @@
+::-webkit-scrollbar{
+    display:none;
+}
+
+body {
+    background-color: #f49930;
+}
+
+#container {
+    left: auto;
+    right: auto;
+    height: 480px;  
+    width: 100%;
+}
+
+#position {
+    height: 100%;
+    width: 420px;
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+}
+/* input box setting */
+#input-box-container {
+    position: absolute;
+    height: 115px;
+    width: 420px;
+    background-color:#95b55b;
+    border-radius: 0 20px 0 0;
+}
+
+#input-box {
+    position: absolute;
+    margin-top: 1%;
+    margin-left: 5%;
+    margin-right: 0;
+    height: 100px;
+    width: 375px;
+    font: 30pt Verdana, Tahoma, sans-serif;
+    color: #f4d95b;
+    background-color:#95b55b;
+    text-align: right;
+    -webkit-line-break: auto;
+    white-space: nowrap;
+    overflow-x: scroll;
+}
+
+/* buttons of input box */
+
+#left-move-position {
+    position: absolute;
+    margin-top: 1%;
+    margin-left: 0;
+    float: left;
+    height: 100px;
+    width: 13px;
+    font-size: 15px;   
+}
+
+#left-move {
+    position: absolute;
+    margin-left: 0px;
+    margin-top: 35px;
+    float: left;
+    height: 10px;
+    width: 8px;
+    font-size: 15px;
+    color: #f4d95b;
+    background-color: #95b55b;
+    border-style: none;
+}
+
+#right-move-position {
+    position: absolute;
+    margin-left: 95%;
+    margin-top: 5%;
+    float: left;
+    height: 80px;
+    width: 13px;
+    font-size: 15px;   
+}
+
+#left-move:hover {
+    transform: scale(1);
+}
+
+#right-move {
+    color: #f4d95b; 
+    position: absolute;
+    margin-left: 1px;
+    margin-top: 19px;
+    background-color: #95b55b;
+    border-style: none;
+    height: 10px;
+    width: 8px;
+    float: right;
+    font-size: 15px;
+}
+
+#right-move:hover {
+    transform: scale(1);
+}
+/* --------------------------- */
+
+/* buttons position */
+#button-zones-container {
+    position: absolute;
+    margin-top: 115px;
+    margin-left: auto;
+    margin-right: auto;
+    height: 365px;
+    width: 420px;
+    background-color: #ee4b71;
+    border-radius: 0 0 20px 0;
+}
+
+#button-zones {
+    position: absolute;
+    margin-top: 4%;
+    margin-left: 5%;
+    height: 90%;
+    width: 90%;
+}
+
+.buttons-row {
+    position: absolute;
+    margin-left: 4%;
+    margin-right: 0;
+}
+
+.buttons-row-one {
+    position: absolute;
+    margin-top: 3px;
+}
+
+.buttons-row-two {
+    position: absolute;
+    margin-top: 73px;
+}
+
+.buttons-row-three {
+    position: absolute;
+    margin-top: 143px;
+}
+
+.buttons-row-four {
+    position: absolute;
+    margin-top: 213px;
+}
+
+.buttons-row-five {
+    position: absolute;
+    margin-top: 283px;
+}
+/* -------------------------------- */
+
+/* button property */
+button {
+    margin-right: 2px;
+    height:50px;
+    width: 80px;
+    font: 23pt bolder Verdana, Tahoma, sans-serif;
+    color: white;
+    background-color: #f3456d;
+    border: 2px solid #f4d95b;
+    border-radius: 5px;
+    transition: all 0.1s;
+}
+
+button:hover {
+    transform: scale(1.1);
+    background-color: #fd3866;
+}
+
+button:active {
+    background-color: #f06f8d;
+}
+
+/* for debug */
+/* #test {
+    position: absolute;
+    margin-left: 500px;
+    background-color: palevioletred;
+    height:400px;
+    width: 300px;
+}
+
+#test-output {
+    height: 100%;
+    width: 100%;
+} */
