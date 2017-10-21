@@ -20,6 +20,7 @@ const INPUT_ITEM_BUTTON_IDS = ["seven", "eight", "nine",
 const ARITH_BUTTON_IDS = ["divide", "multiply", "minus", "plus"];
 const BRACKET_IDS = ["left-bracket", "right-bracket"];
 const inputBox = document.getElementById('input-box');      // 输入框
+inputBox.innerText = "\n0";
 const scrollMoveStep = 20;      // 滚动条移动距离-
 // const testOutput = document.getElementById('test-output');   // for debug
 var inputBracketsNum = 0;       // 左右括号数量
