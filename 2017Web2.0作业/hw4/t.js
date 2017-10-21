@@ -269,7 +269,7 @@ var inFixToSuffix = function(inputExpression) {
             }
             if (isMinus) {
                 isMinus = false;
-                suffixStack.push(-parseFloat(-inputExpression.slice(start, end + 1)));
+                suffixStack.push(-parseFloat(inputExpression.slice(start, end + 1)));
             } else {
                 suffixStack.push(parseFloat(inputExpression.slice(start, end + 1)));                
             }
@@ -301,31 +301,32 @@ var inFixToSuffix = function(inputExpression) {
         else if (isLowPrority(inputExpression[i])) {    // 优先级低的运算符 加减
             // 先判断是不是代表正负号，而不是加减号，eg.是一个负数 '-x' '(-x' ; 是一个减号： 'x-x' ‘x-(''
             if ((i == 0 || isLeftBracket(inputExpression[i-1]) && isDigit(inputExpression[i+1]))) {
-                if (inputExpression[i+1] === MINUS) {
+                if (inputExpression[i] === MINUS) {
                     isMinus = true;
                 }
-                continue;
             }
-            // 将从栈顶到第一个优先级等于它的运算符（或 '(',但优先满足前一个条件）
-            // 之间的运算符加入后缀表达式中，该运算符再入栈
-            while (!isEmptyStack(opExpStack)) {
-                var popData = opExpStack.pop();
-                if (popData === '(') {
-                    opExpStack.push(popData);
-                    break;
+            else {
+                // 将从栈顶到第一个优先级等于它的运算符（或 '(',但优先满足前一个条件）
+                // 之间的运算符加入后缀表达式中，该运算符再入栈
+                while (!isEmptyStack(opExpStack)) {
+                    var popData = opExpStack.pop();
+                    if (popData === '(') {
+                        opExpStack.push(popData);
+                        break;
+                    }
+                    else {
+                        suffixStack.push(popData);
+                    }
                 }
-                else {
-                    suffixStack.push(popData);
-                }
+                opExpStack.push(inputExpression[i]);
             }
-            opExpStack.push(inputExpression[i]);
         }
         ++i;
     }
     // 把操作符栈里剩下的操作符全部放进后缀表达式栈
     while (!isEmptyStack(opExpStack)) {
         suffixStack.push(opExpStack.pop());
-    }   
+    }
     return suffixStack;
 }
 // 获得小数长度
