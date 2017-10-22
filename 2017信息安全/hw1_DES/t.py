@@ -381,7 +381,6 @@ def test2():
             break
     print("密文 ", result)
     
-        
 
 if __name__ == "__main__":
     encrypt_test()
