@@ -10,7 +10,7 @@
 
 * Mole: 
 
-    + Two ways to make game over: one is waiting for 30s, other is clicking the **Start Game | Stop Game** button. 
+    + Two ways to make game over: one is waiting for 30s, other is clicking the **Start Game | Stop Game** button. So the score of player can be negative.
     
     + After that, if player click the **Start Game | Stop Game** button again, the game will restart with _0 score and 30 seconds_.
 

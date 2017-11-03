@@ -13,11 +13,16 @@
     
     // if a mole be clicked
     function moleBeClicked() {  // if game is on and player clicked correctly
-        if (isGameStatus && this.className == moleColorClassName['TOCLICK']) {
-            ++scoreCounter.innerText;
-            this.className = moleColorClassName['ORIGINAL'];    // restore itself
-            makeRandomMole();                                   // get a mole randomly
+        if (isGameStatus) {
+            if (this.className == moleColorClassName['TOCLICK']) {
+                ++scoreCounter.innerText;
+                this.className = moleColorClassName['ORIGINAL'];    // restore itself
+                makeRandomMole();                                   // get a mole randomly
+            } else {
+                --scoreCounter.innerText;
+            }
         }
+        
     }
     
     // dynamically create mole buttons
