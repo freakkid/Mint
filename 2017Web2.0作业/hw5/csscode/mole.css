@@ -1,0 +1,130 @@
+h1 {
+    position: relative;
+    margin-top: 2%;
+    text-align: center;
+    font-size: 18pt;
+    font-weight: normal;
+}
+
+#game-header {
+    position: relative;
+    width: 100%;
+}
+
+.game-description {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-size: 18px;
+}
+
+.game-description p {
+    margin-bottom: 10px;
+}
+
+.game-description-rows {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    height: 80px;
+    width: 300px;
+}
+
+.game-description-up-row {
+    float: left;
+    text-align: center;
+    height: 28px;
+    width: 100%;
+}
+
+#start-stop {
+    float: left;
+    border: solid rgb(225, 225, 225) thin;
+    background-color: white;
+    border-radius: 5px;
+    font-size: 15px;
+    outline: none;
+}
+
+#start-stop:active {
+    background-color: rgb(51, 131, 244)
+}
+
+.count {
+    float: right;
+    border: solid rgb(225, 225, 225) thin;
+    line-height: 25px;
+    width: 45px;
+    text-align: left;
+}
+
+.time-title {
+    position: absolute;
+    margin-left: 69%;
+}
+
+.game-description-bottom-row {
+    margin-top: 8px;
+    float: left;
+    text-align: center;
+    height: 28px;
+    width: 100%;
+}
+
+#game-status {
+    border: solid rgb(225, 225, 225) thin;
+    line-height: 25px;
+    float: left;
+    height: auto;
+    width: 150px;
+    text-align: left;   
+}
+
+.score-title {
+    position: absolute;
+    margin-left: 67%;
+}
+
+#game-introductions {
+    position: relative;
+    margin-left: 26%;
+    margin-right: auto;
+    text-align: left;
+    height: auto;
+    width: 70%;
+}
+
+#game-introductions p {
+    font-weight: bold;
+}
+
+#test {
+    height: 100px;
+    width: 100%;
+}
+
+#moles-position {
+    position: relative;
+}
+
+hr {
+    align-self: center;
+    width: 235px;
+}
+
+.mole-original {
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background-color: white;
+}
+
+.mole-to-click {
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background-color: white;
+    border: solid 2px rgb(61, 152, 247); 
+}
+
