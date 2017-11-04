@@ -117,14 +117,7 @@ hr {
     height: 16px;
     width: 16px;
     border-radius: 50%;
-    background-color: white;
-}
-
-.mole-to-click {
-    height: 16px;
-    width: 16px;
-    border-radius: 50%;
-    background-color: white;
-    border: solid 2px rgb(61, 152, 247); 
+    margin-left: 0.3%;
+    margin-right: 0.3%;
 }
 

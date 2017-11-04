@@ -4,25 +4,24 @@
     const gameStatus = document.getElementById('game-status');
     const timeCounter = document.getElementById('time-count');
     const scoreCounter = document.getElementById('score-count');
-    const moleColorClassName = {'ORIGINAL': 'mole-original', 'TOCLICK': 'mole-to-click'}
     var isGameStatus = false,
         timeCounterID,
         molesDiv = document.createElement('div'),
+        indexToClick,       // the index of the button to click
         i,
         j;
     
     // if a mole be clicked
     function moleBeClicked() {  // if game is on and player clicked correctly
         if (isGameStatus) {
-            if (this.className == moleColorClassName['TOCLICK']) {
+            this.checked = false;       // restore itself
+            if (this.index == indexToClick) {
                 ++scoreCounter.innerText;
-                this.className = moleColorClassName['ORIGINAL'];    // restore itself
-                makeRandomMole();                                   // get a mole randomly
+                makeRandomMole();       // get a mole randomly
             } else {
                 --scoreCounter.innerText;
             }
         }
-        
     }
     
     // dynamically create mole buttons
@@ -30,11 +29,12 @@
         var moleRowDiv = document.createElement('div');
         moleRowDiv.style.textAlign = "center";
         for (j = 0; j < 10; j++) {
-            var mole = document.createElement('button');
-            mole.className = moleColorClassName['ORIGINAL'];
-            mole.style.marginLeft = mole.style.marginRight = "0.3%";
+            var mole = document.createElement('input');
+            mole.type = "radio";
+            mole.className = "mole-original";
             mole.onclick = moleBeClicked;
-            mole.style.outline = "none";
+            mole.disabled = true;
+            mole.index = i * 10 + j;
             moleRowDiv.appendChild(mole);
         }
         molesDiv.appendChild(moleRowDiv);
@@ -42,30 +42,35 @@
     document.getElementById('moles-position').insertBefore(molesDiv,
         document.getElementById('moles-position').getElementsByTagName('hr')[1]);
 
-    
     // alert to display score when game ends
     function displayScoreByAlert() {
-            alert(GAME_STATUS['GAMEOVER'] + '.\nYour socre is: ' + scoreCounter.innerText);
-    }
-    // buttons restore original color
-    function buttonTurnToOriginalColor() {
-        var toClickButtons = document.getElementsByClassName(moleColorClassName['TOCLICK']);
-        if (toClickButtons.length > 0) {
-            toClickButtons[0].className = moleColorClassName['ORIGINAL'];
-        }
+        alert(GAME_STATUS['GAMEOVER'] + '.\nYour socre is: ' + scoreCounter.innerText);
     }
 
     // randomly generate a mole for clicking
-    const moles = document.getElementsByClassName(moleColorClassName['ORIGINAL']);
+    const moles = document.getElementsByTagName('input');
     function makeRandomMole() {
-        moles[Math.floor(Math.random() * 60)].className = moleColorClassName['TOCLICK'];
+        moles[(indexToClick = Math.floor(Math.random() * 60))].checked = true;
+    }
+
+    // set buttons diabled or abled
+    function makeDisabledTrueOrFalse(disabledValue) {
+        for (var k = 0; k < moles.length; k++) {
+            moles[k].disabled = disabledValue;
+        }
+    }
+
+    // buttons restore original color
+    function buttonTurnToOriginal() {
+        moles[indexToClick].checked = false;
+        makeDisabledTrueOrFalse(true);
     }
 
     // game over to do
     function gameOver() {
         clearInterval(timeCounterID);   // stop time count down
         displayScoreByAlert();          // alert to display player's score
-        buttonTurnToOriginalColor();    // turn into orginal color
+        buttonTurnToOriginal();    // turn into orginal color
         gameStatus.innerText = GAME_STATUS['GAMEOVER']; // display game status
         isGameStatus = false;           // set game status flag
     }
@@ -75,6 +80,7 @@
         scoreCounter.innerText = 0;     // init the score
         timeCounter.innerText = 30;     // init the time
         makeRandomMole();               // randomly generate a mole to click
+        makeDisabledTrueOrFalse(false); // make disbled of  all buttons false
         gameStatus.innerText = GAME_STATUS['PLAYING'];  // display game status
         isGameStatus = true;            // set game status flag
     }
@@ -95,5 +101,4 @@
             gameStart();
         }
     };
-
 }());
