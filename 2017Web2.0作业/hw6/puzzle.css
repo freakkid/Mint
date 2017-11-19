@@ -1,0 +1,100 @@
+.middle-position {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: 400px;
+}
+
+h1 {
+    text-align: center;
+}
+
+#puzzle-position {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    height: 400px;
+    width: 400px;
+}
+
+#thumbnail {
+    position: absolute;
+    margin-left: 200px;
+    margin-top: 50px;
+    height: 200px;
+    width: 200px;
+    border: 2px solid rgb(189, 182, 182);
+}
+
+.puzzle-container {
+    height: 391px;
+    width: 391px;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(189, 182, 182);
+}
+
+.puzzle-block {
+    position: absolute;
+    height: 95px;
+    width: 95px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    border: 2px solid rgb(189, 182, 182);
+    transition: 0.1s;
+}
+
+.puzzle-block:hover {
+    transform: scale(1.04);
+}
+
+.empty-block {
+    position: absolute;
+    height: 95px;
+    width: 95px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    border: 2px solid rgb(189, 182, 182);
+    visibility: hidden;
+}
+
+#restart {
+    position: relative;
+    margin: 0 auto;
+    display: block;
+    height: 40px;
+    width: 122px;   
+    background-color: #3F87F6;
+    color: white;
+    font-size: 16pt;
+    outline: 0;
+    box-shadow: 5px 5px 6px 1px #888888;
+    transition: 0.2s;
+}
+
+#restart:hover {
+    transform: scale(1.1);
+}
+.title {
+    position: absolute;
+    margin-left: 1000px;
+    margin-top: -450px;
+    height: 350px;
+    width: 350px;
+    font-size: 29px;
+    font-weight: bold;
+    font-style: oblique;
+}
+
+.status {
+    position: absolute;
+    margin-left: 1100px;
+    margin-top: -450px;
+    height: 350px;
+    width: 350px;
+    font-size: 29px;
+    font-weight: bold;
+    font-style: oblique;
+}
