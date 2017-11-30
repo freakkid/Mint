@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Todos</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="css/main.css" type="text/css" rel="stylesheet" media="screen" />
+    <link rel="shortcut icon" href="image/ai.png" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+    <script src="js/register.js" defer="defer"></script>
+</head>
+
+<body>
+    <div id="left-part"></div>
+    <div id="right-part"></div>
+    <div class="middle-part">
+        <h1>Register</h1>
+            <form id="register" action="/" method="post">
+                <label for="username-input">Username: </label>
+                <input id="username-input" type="text" name="username">
+                <br />
+                <label for="studentid-input">StudentId: </label>
+                <input id="studentid-input" type="text" name="studentid">
+                <br />
+                <label for="phone-input">Phone: </label>
+                <input id="phone-input" type="text" name="phone" >
+                <br />
+                <label for="email-input">E-mail: </label>
+                <input id="email-input" type="text" name="email">
+                <br />
+                <input type="button" name="RESET" value="RESET">
+                <input type="button" name="SUBMIT" value="SUBMIT">
+            </form>
+    </div>
+    <img class="ai" src="image/ai.png" alt="ai"></img>
+</body>
+
+</html>
