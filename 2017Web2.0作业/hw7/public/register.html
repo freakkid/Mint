@@ -15,22 +15,28 @@
     <div id="right-part"></div>
     <div class="middle-part">
         <h1>Register</h1>
-            <form id="register" action="/" method="post">
-                <label for="username-input">Username: </label>
-                <input id="username-input" type="text" name="username">
-                <br />
-                <label for="studentid-input">StudentId: </label>
-                <input id="studentid-input" type="text" name="studentid">
-                <br />
-                <label for="phone-input">Phone: </label>
-                <input id="phone-input" type="text" name="phone" >
-                <br />
-                <label for="email-input">E-mail: </label>
-                <input id="email-input" type="text" name="email">
-                <br />
-                <input type="button" name="RESET" value="RESET">
-                <input type="button" name="SUBMIT" value="SUBMIT">
-            </form>
+        <form id="register" action="/" method="post">
+            <label for="username-input">Username: </label>
+            <input id="username-input" type="text" name="username">
+            <br />
+            <label for="studentid-input">StudentId: </label>
+            <input id="studentid-input" type="text" name="studentid">
+            <br />
+            <label for="phone-input">Phone: </label>
+            <input id="phone-input" type="text" name="phone">
+            <br />
+            <label for="email-input">E-mail: </label>
+            <input id="email-input" type="text" name="email">
+            <br />
+            <input type="button" name="RESET" value="RESET">
+            <input type="button" name="SUBMIT" value="SUBMIT">
+        </form>
+        <div id="error-info">
+            <p id="username-error"></p>
+            <p id="studentid-error"></p>
+            <p id="phone-error"></p>
+            <p id="email-error"></p>
+        </div>
     </div>
     <img class="ai" src="image/ai.png" alt="ai"></img>
 </body>
