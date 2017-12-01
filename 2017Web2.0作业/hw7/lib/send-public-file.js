@@ -26,7 +26,7 @@ function sendAttachFile(response, filename, contentType) {
 }
 
 function sendRegisterHtmlFile(response) {
-    fs.readFile('public/register.html', function (error, pgResp) {
+    fs.readFile('public/register.html', 'utf8', function (error, pgResp) {
         if (error) {
             sendPage.notFindPageAndSend404(response);
         } else {
@@ -36,7 +36,7 @@ function sendRegisterHtmlFile(response) {
 }
 
 function sendDefaultHtmlFile(response, userInfo) {
-    fs.readFile('public/details.html', 'utf-8', function (error, pgResp) {
+    fs.readFile('public/details.html', 'utf8', function (error, pgResp) {
         if (error) {
             sendPage.notFindPageAndSend404(response);
         } else {

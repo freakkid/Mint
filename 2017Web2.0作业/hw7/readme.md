@@ -6,4 +6,6 @@
 
 + The folder named **public** contains the files to send to client consisted of html, js, css, png file.
 
++ data.json will be in the same place with signin.js file.
+
 + At last, thanks for reviewing!
