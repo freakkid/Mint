@@ -68,77 +68,27 @@ function addIntoDataAndSendJsonResult(DATAJSONFILE, postDatas) {
     return returnMessage;
 }
 
+// check if has user with same attribute in users list
 function checkDuplicateData(DATAJSONFILE, params) {
-    switch (params['query'].toLowerCase()) {
-        case 'username':
-            if (getUserInfoByUsername(DATAJSONFILE, params['value'])) {
-                return { 'username': 'true' };
-            } else {
-                return { 'username': 'false' };
-            }
-            break;
-        case 'studentid':
-            if (getUserInfoByStudentId(DATAJSONFILE, params['value'])) {
-                return { 'studentid': 'true' };
-            } else {
-                return { 'studentid': 'false' };
-            }
-            break;
-        case 'phone':
-            if (getUserInfoByPhone(DATAJSONFILE, params['value'])) {
-                return { 'phone': 'true' };
-            } else {
-                return { 'phone': 'false' };
-            }
-            break;
-        case 'email':
-            if (getUserInfoByEmail(DATAJSONFILE, params['value'])) {
-                return { 'email': 'true' };
-            } else {
-                return { 'email': 'false' };
-            }
-            break;
-        default:
-            return { '': '' };
-    }
+    const key = params['query'].toLowerCase();
+    return getUserInfoByKey(DATAJSONFILE, key, params['value']) ? {[key] : 'true'} : {[key] : 'false'};
+
 }
 
-// find user info with same username and get user info
-// to send a detail page
+// key is an attribute name and value is its value
+// find user info with value and get user info
+function getUserInfoByKey(DATAJSONFILE, key, value) {
+    // get json array from json string
+    var jsonUserArray = JSON.parse(fs.readFileSync(DATAJSONFILE, 'utf8'));
+    // find same value
+    return jsonUserArray.find(function (element) {
+        return element[key] == value;
+    });
+}
+
+// get user whose username is usernameParam
 function getUserInfoByUsername(DATAJSONFILE, usernameParam) {
-    // get json array from json string
-    var jsonUserArray = JSON.parse(fs.readFileSync(DATAJSONFILE, 'utf8'));
-    // find same value
-    return jsonUserArray.find(function (element) {
-        return element['username'] == usernameParam;
-    });
-}
-
-function getUserInfoByStudentId(DATAJSONFILE, studentidParam) {
-    // get json array from json string
-    var jsonUserArray = JSON.parse(fs.readFileSync(DATAJSONFILE, 'utf8'));
-    // find same value
-    return jsonUserArray.find(function (element) {
-        return element['studentid'] == studentidParam;
-    });
-}
-
-function getUserInfoByPhone(DATAJSONFILE, phoneParam) {
-    // get json array from json string
-    var jsonUserArray = JSON.parse(fs.readFileSync(DATAJSONFILE, 'utf8'));
-    // find same value
-    return jsonUserArray.find(function (element) {
-        return element['phone'] == phoneParam;
-    });
-}
-
-function getUserInfoByEmail(DATAJSONFILE, emailParam) {
-    // get json array from json string
-    var jsonUserArray = JSON.parse(fs.readFileSync(DATAJSONFILE, 'utf8'));
-    // find same value
-    return jsonUserArray.find(function (element) {
-        return element['email'] == emailParam;
-    });
+    return getUserInfoByKey(DATAJSONFILE, 'username', usernameParam);
 }
 
 exports.isDataFileExist = isDataFileExist;

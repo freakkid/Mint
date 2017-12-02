@@ -17,10 +17,10 @@ function sendIMGFile(response, filename) {
 
 function sendAttachFile(response, filename, contentType) {
     fs.readFile(filename, function (error, pgResp) {
-        if (!error) {
-            sendPage.sendPublicFileAnd200(response, pgResp, contentType);
+        if (error) {
+            sendPage.notFindPageAndSend404(response);            
         } else {
-            sendPage.notFindPageAndSend404(response);
+            sendPage.sendPublicFileAnd200(response, pgResp, contentType);
         }
     });
 }

@@ -3,14 +3,13 @@ const http = require('http');
 const url = require('url');
 const fs = require("fs");
 const querystring = require('querystring');
-const server = http.createServer();
 
 const jsonObjHanler = require('./lib/json-object-handler.js');
 const sendPublicFile = require('./lib/send-public-file.js');
 const sendPage = require('./lib/send-page.js');
 
 const DATAJSONFILE = 'data.json';
-
+const server = http.createServer();
 
 // check if data file exit
 if (!jsonObjHanler.isDataFileExist(DATAJSONFILE)) {
