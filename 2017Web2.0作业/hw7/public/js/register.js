@@ -1,5 +1,5 @@
 $(function () {
-    // check if loses focus and give error tips
+    // check format of input and if be occupied when loses focus and give error tips
     $("input[name=username]").blur(function () {
         if (!(/^[a-zA-Z][\w]{5,17}$/.test($("input[name=username]").val()))) {
             $('#username-error').text('6~18 English letters, numbers or underscores, must begin with an English letter');
@@ -7,8 +7,8 @@ $(function () {
             $('#username-error').text('');
             $.get(
                 "/check",
-                { query: 'username', value: $("input[name=username]").val()},
-                function(data) {
+                { query: 'username', value: $("input[name=username]").val() },
+                function (data) {
                     if (data.username == "true") {
                         $('#username-error').text('Username has been occupied');
                     }
@@ -23,8 +23,8 @@ $(function () {
             $('#studentid-error').text('');
             $.get(
                 "/check",
-                { query: 'studentid', value: $("input[name=studentid]").val()},
-                function(data) {
+                { query: 'studentid', value: $("input[name=studentid]").val() },
+                function (data) {
                     if (data.studentid == "true") {
                         $('#studentid-error').text('StudentId has been occupied');
                     }
@@ -39,8 +39,8 @@ $(function () {
             $('#phone-error').text('');
             $.get(
                 "/check",
-                { query: 'phone', value: $("input[name=phone]").val()},
-                function(data) {
+                { query: 'phone', value: $("input[name=phone]").val() },
+                function (data) {
                     if (data.phone == "true") {
                         $('#phone-error').text('Phone has been occupied');
                     }
@@ -55,8 +55,8 @@ $(function () {
             $('#email-error').text('');
             $.get(
                 "/check",
-                { query: 'email', value: $("input[name=email]").val()},
-                function(data) {
+                { query: 'email', value: $("input[name=email]").val() },
+                function (data) {
                     if (data.email == "true") {
                         $('#email-error').text('Email has been occupied');
                     }
@@ -120,10 +120,8 @@ $(function () {
                     alert("Connection error" + error);
                 },
                 success: function (data) {
-                    if (data.DUPLICATION == "") {
-                        // if successful register jump to details page
-                        window.location.href = "http://" + window.location.host + '?username=' + data.USERNAME;
-                    } else {
+
+                    if (data.DUPLICATION != "") {
                         // if fail to register set error info if exists duplicate info
                         if ((data.DUPLICATION).indexOf('USERNAME') != -1) {
                             $('#username-error').text('Username has been occupied');
@@ -137,6 +135,23 @@ $(function () {
                         if (data.DUPLICATION.indexOf('EMAIL') != -1) {
                             $('#email-error').text('Email has been occupied');
                         }
+                    } // if post data format is invalid
+                    else if (data.INVALID != "") {
+                        if ((data.INVALID).indexOf('USERNAME') != -1) {
+                            $('#username-error').text('6~18 English letters, numbers or underscores, must begin with an English letter');
+                        }
+                        if (data.INVALID.indexOf('STUDENTID') != -1) {
+                            $('#studentid-error').text('8 digits, cannot start with 0');
+                        }
+                        if (data.INVALID.indexOf('PHONE') != -1) {
+                            $('#phone-error').text('11 digits, cannot start with 0');
+                        }
+                        if (data.INVALID.indexOf('EMAIL') != -1) {
+                            $('#email-error').text('Email format is illegal');
+                        }
+                    } else {
+                        // if successful register jump to details page
+                        window.location.href = "http://" + window.location.host + '?username=' + data.USERNAME;
                     }
                 },
             });

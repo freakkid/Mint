@@ -26,7 +26,6 @@ server.on('request', (request, response) => {
         });
         request.on('end', function () { // deal with post data
             postDatas = querystring.parse(postDatas);
-            var returnMessage;
             // read data file infomation from data file
             fs.readFile(DATAJSONFILE, 'utf8', function (error, data) {
                 if (error) {
@@ -55,36 +54,8 @@ server.on('request', (request, response) => {
             const usernameParam = params['username'];       // get parameter of username
             // check if input is duplicate after user input them
             if (url.parse(request.url, true).pathname == "/check") {
-                switch (params['query'].toLowerCase()) {
-                    case 'username':
-                        if (jsonObjHanler.getUserInfoByUsername(DATAJSONFILE, params['value'])) {
-                            sendPage.sendJsonStringAnd200(response,  JSON.stringify({'username':'true'}));
-                        } else {
-                            sendPage.sendJsonStringAnd200(response,  JSON.stringify({'username':'false'}));
-                        }
-                        break;
-                    case 'studentid':
-                        if (jsonObjHanler.getUserInfoByStudentId(DATAJSONFILE, params['value'])) {
-                            sendPage.sendJsonStringAnd200(response,  JSON.stringify({'studentid':'true'}));
-                        } else {
-                            sendPage.sendJsonStringAnd200(response,  JSON.stringify({'studentid':'false'}));
-                        }
-                        break;
-                    case 'phone':
-                        if (jsonObjHanler.getUserInfoByPhone(DATAJSONFILE, params['value'])) {
-                            sendPage.sendJsonStringAnd200(response,  JSON.stringify({'phone':'true'}));
-                        } else {
-                            sendPage.sendJsonStringAnd200(response,  JSON.stringify({'phone':'false'}));
-                        }
-                        break;
-                    case 'email':
-                        if (jsonObjHanler.getUserInfoByEmail(DATAJSONFILE, params['value'])) {
-                            sendPage.sendJsonStringAnd200(response,  JSON.stringify({'email':'true'}));
-                        } else {
-                            sendPage.sendJsonStringAnd200(response,  JSON.stringify({'email':'false'}));
-                        }
-                        break;
-                }
+                sendPage.sendJsonStringAnd200(response,  
+                    JSON.stringify(jsonObjHanler.checkDuplicateData(DATAJSONFILE, params)));
             }
             // check paramenter 'username' and if exsits the username
             // if paramenter 'username' is not null
@@ -94,14 +65,16 @@ server.on('request', (request, response) => {
                 if (userInfo) { // if the user exist in data file, send details page
                     sendPublicFile.sendDefaultHtmlFile(response, userInfo);
                 } else {
-                    sendPublicFile.sendRegisterHtmlFile(response);
+                    // redirect to register page if username not exist
+                    sendPage.sendRegisterPageAnd301(response, urlParse.host);
                 }
             } else {
+                // send a register page if url unknow
                 sendPublicFile.sendRegisterHtmlFile(response);
             }
         }
     }
 });
 
-server.listen(8080);
-console.log('Server is running at http://127.0.0.1:8080/');
+server.listen(8000);
+console.log('Server is running at http://127.0.0.1:8000/');

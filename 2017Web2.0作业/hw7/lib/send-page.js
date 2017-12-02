@@ -27,8 +27,14 @@ function sendPublicFileAnd200(response, pgResp, contentType) {
     response.end(pgResp);
 }
 
+function sendRegisterPageAnd301(response, urlHost) {
+    response.writeHead(301, {Location: '/' });
+    response.end();
+}
+
 exports.notGetDataAndSend501 = notGetDataAndSend501;
 exports.notFindPageAndSend404 = notFindPageAndSend404;
 exports.sendJsonStringAnd200 = sendJsonStringAnd200;
 exports.sendHtmlPageAnd200 = sendHtmlPageAnd200;
 exports.sendPublicFileAnd200 = sendPublicFileAnd200;
+exports.sendRegisterPageAnd301 = sendRegisterPageAnd301;
