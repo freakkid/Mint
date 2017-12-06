@@ -28,6 +28,7 @@ html, body {
     width: 28px;
     padding: 0;
     border-radius: 50%;
+    cursor: default;
 }
 
 #info-bar {
@@ -41,8 +42,7 @@ html, body {
     transition: all 0.5s;
 }
 
-/* #button:hover */
- #info-bar {
+#button:hover #info-bar {
     position: absolute;
     left: -50px;
     top: -180px;
@@ -63,8 +63,7 @@ html, body {
     transition: all 0.5s;
 }
 
-/* #button:hover */
- #info-bar .info p {
+#button:hover #info-bar .info p {
     margin-left: 45px;
     margin-top: 40px;
     font-size: 22pt;
@@ -81,8 +80,7 @@ html, body {
     transition: all 0.5s;
 }
 
-/* #button:hover */
- #control-ring-container {
+#button:hover #control-ring-container {
     left: -80px;
     top: -80px;
     height: 180px;
@@ -101,31 +99,41 @@ html, body {
     width: 22px;
     height: 22px;
     border-radius: 50%;
-    background-color: #303F9F;
     background-size: 18px 18px;
+    color: #1C977B;
     transition: all 0.5s;
 }
 
-/* #button:hover */
- #control-ring li {
+.pointer-active-color {
+    background-color: #303F9F;
+}
+
+.no-pointer-active-color {
+    background-color: #989FCF;
+}
+
+.no-pointer-active {
+    pointer-events: none;
+}
+
+#button:hover #control-ring li {
     width: 32px;
     height: 32px;
 }
 
-/* #button:hover */
- #control-ring li span.index {
+#button:hover #control-ring li span.index {
     vertical-align: middle;
     margin-left: 5px;
     font-size: 18pt;
     color: #1C977B;
 }
 
-/* #button:hover */
- #control-ring li span.unread {
+#control-ring li span.unread {
     position: absolute;
     height: 20px;
     width: 20px;
-    background-color: red; 
+    background-color: red;
+    display: none;
     border-radius: 50%;
     text-align: center;
     font-size: 10pt;
@@ -134,30 +142,25 @@ html, body {
     color: white;
 }
 
-/* #button:hover */
- #control-ring li:nth-child(1) {
+#button:hover #control-ring li:nth-child(1) {
     top: 22px;
     left: 22px;
 }
-/* #button:hover */
- #control-ring li:nth-child(2) {
+#button:hover #control-ring li:nth-child(2) {
     top: 70px;    
 }
 
-/* #button:hover */
- #control-ring li:nth-child(3) {
+#button:hover #control-ring li:nth-child(3) {
     top: 120px;
     left: 15px;
 }
 
-/* #button:hover */
- #control-ring li:nth-child(4) {
+#button:hover #control-ring li:nth-child(4) {
     top: 145px;
     left: 55px;
 }
 
-/* #button:hover */
- #control-ring li:nth-child(5) {
+#button:hover #control-ring li:nth-child(5) {
     top: 145px;
     left: 105px;
 } 
@@ -175,8 +178,7 @@ html, body {
     transition: all 0.5s;
 }
 
-/* #button:hover */
- .apb {
+#button:hover .apb {
     top: -13px;
     left: -5px;
     height: 50px;
