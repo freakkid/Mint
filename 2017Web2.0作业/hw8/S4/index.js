@@ -7,11 +7,16 @@ $(function () {
     allLis.attr('randomID', generateRandomID());    // new attr: all lis get when new starting as a ID of a session
 
     function resetAll() {
-        allLis.removeClass("no-pointer-active").removeClass("no-pointer-active-color").addClass("pointer-active-color");
+        resetButton();
         allLis.find("span.unread").hide();
-        allLis.attr('randomID', generateRandomID());
         infoBar.find('p.result').text("");
         orderDisplay.text('');
+    }
+
+    function resetButton() {
+        allLis.removeClass("no-pointer-active").removeClass("no-pointer-active-color").
+            addClass("pointer-active-color");
+        allLis.attr('randomID', generateRandomID());
     }
 
     // red dot disappear when mouse leave button
@@ -22,6 +27,9 @@ $(function () {
     // check the response data is valid number or not
     // if valid show red dot and the number
     function allLisClickHandle() {
+        if (infoBar.find('p.result').text() !== "") {
+            infoBar.find('p.result').text("");
+        }
         var that,
             callback;
         if (arguments.length <= 1) {    // check number of arguments
@@ -78,6 +86,7 @@ $(function () {
         });
         if (getData.length == 5) {
             $(this).find('p.result').text(getSumOfArray(getData));
+            resetButton();
         }
     });
 
@@ -97,8 +106,8 @@ $(function () {
                     oneLiClick($(order[3]), function() {
                         oneLiClick($(order[4]), function() {
                             infoBar.click();
-                        })
-                    })
+                        });
+                    });
                 });
             });
         });

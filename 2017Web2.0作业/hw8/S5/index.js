@@ -8,12 +8,17 @@ $(function () {
     allLis.attr('randomID', generateRandomID());    // new attr: all lis get when new starting as a ID of a session
 
     function resetAll() {
-        allLis.removeClass("no-pointer-active").removeClass("no-pointer-active-color").addClass("pointer-active-color");
+        resetButton();
         allLis.find("span.unread").hide();
-        allLis.attr('randomID', generateRandomID());
         infoBar.find('p.result').text("");
         orderDisplay.text('');
         say.text('');
+    }
+
+    function resetButton() {
+        allLis.removeClass("no-pointer-active").removeClass("no-pointer-active-color").
+            addClass("pointer-active-color");
+        allLis.attr('randomID', generateRandomID());
     }
 
     // red dot disappear when mouse leave button
@@ -27,6 +32,9 @@ $(function () {
     // check the response data is valid number or not
     // if valid show red dot and the number
     function aHandler() {
+        if (infoBar.find('p.result').text() !== "") {
+            infoBar.find('p.result').text("");
+        }
         var that,
             callback,
             currentSum;
@@ -49,7 +57,8 @@ $(function () {
         that.find('span.unread').text('···');
         that.find("span.unread").show();
         var d = new $.Deferred();
-        if (!!Math.round(Math.random())) {
+        
+        if (currentSum !== undefined && !!Math.round(Math.random())) {
             d.reject(new RamdonError('A：这不是个天大的秘密', currentSum));
         } else {
             say.text('A：这是个天大的秘密');
@@ -70,7 +79,7 @@ $(function () {
                         addClass("pointer-active-color");
                     $('#' + thisId + ' span.unread').text(data);    // display number
                     currentSum += parseInt(data);
-                    if (callback && !!currentSum) {  // if has callback 
+                    if (callback && currentSum !== undefined) {  // if has callback 
                         callback(currentSum);
                     }
                 }
@@ -80,6 +89,9 @@ $(function () {
     }
 
     function bHandler() {
+        if (infoBar.find('p.result').text() !== "") {
+            infoBar.find('p.result').text("");
+        }
         var that,
             callback,
             currentSum;
@@ -102,7 +114,7 @@ $(function () {
         that.find('span.unread').text('···');
         that.find("span.unread").show();
         var d = new $.Deferred();
-        if (!!Math.round(Math.random())) {
+        if (currentSum !== undefined && !!Math.round(Math.random())) {
             d.reject(new RamdonError('B：我知道', currentSum));
         } else {
             say.text('B：我不知道');
@@ -123,7 +135,7 @@ $(function () {
                         addClass("pointer-active-color");
                     $('#' + thisId + ' span.unread').text(data);    // display number
                     currentSum += parseInt(data);
-                    if (callback && !!currentSum) {  // if has callback funtion
+                    if (callback && currentSum !== undefined) {  // if has callback funtion
                         callback(currentSum);
                     }
                 }
@@ -133,6 +145,9 @@ $(function () {
     }
 
     function cHandler() {
+        if (infoBar.find('p.result').text() !== "") {
+            infoBar.find('p.result').text("");
+        }
         var that,
             callback,
             currentSum;
@@ -155,7 +170,7 @@ $(function () {
         that.find('span.unread').text('···');
         that.find("span.unread").show();
         var d = new $.Deferred();
-        if (!!Math.round(Math.random())) {
+        if (currentSum !== undefined && !!Math.round(Math.random())) {
             d.reject(new RamdonError('C：你知道', currentSum));
         } else {
             say.text('C：你不知道');
@@ -176,7 +191,7 @@ $(function () {
                         addClass("pointer-active-color");
                     $('#' + thisId + ' span.unread').text(data);    // display number
                     currentSum += parseInt(data);
-                    if (callback && !!currentSum) {  // if has callback funtion
+                    if (callback && currentSum !== undefined) {  // if has callback funtion
                         callback(currentSum);
                     }
                 }
@@ -186,6 +201,9 @@ $(function () {
     }
 
     function dHandler() {
+        if (infoBar.find('p.result').text() !== "") {
+            infoBar.find('p.result').text("");
+        }
         var that,
             callback,
             currentSum;
@@ -208,7 +226,7 @@ $(function () {
         that.find('span.unread').text('···');
         that.find("span.unread").show();
         var d = new $.Deferred();
-        if (!!Math.round(Math.random())) {
+        if (currentSum !== undefined && !!Math.round(Math.random())) {
             d.reject(new RamdonError('D：他知道', currentSum));
         } else {
             say.text('D：他不知道');
@@ -229,7 +247,7 @@ $(function () {
                         addClass("pointer-active-color");
                     $('#' + thisId + ' span.unread').text(data);    // display number
                     currentSum += parseInt(data);
-                    if (callback && !!currentSum) {  // if has callback funtion
+                    if (callback && currentSum !== undefined) {  // if has callback funtion
                         callback(currentSum);
                     }
                 }
@@ -239,6 +257,9 @@ $(function () {
     }
 
     function eHandler() {
+        if (infoBar.find('p.result').text() !== "") {
+            infoBar.find('p.result').text("");
+        }
         var that,
             callback,
             currentSum;
@@ -261,7 +282,7 @@ $(function () {
         that.find('span.unread').text('···');
         that.find("span.unread").show();
         var d = new $.Deferred();
-        if (!!Math.round(Math.random())) {
+        if (currentSum !== undefined && !!Math.round(Math.random())) {
             d.reject(new RamdonError('E：才不怪', currentSum));
         } else {
             say.text('E：才怪');
@@ -282,7 +303,7 @@ $(function () {
                         addClass("pointer-active-color");
                     $('#' + thisId + ' span.unread').text(data);    // display number
                     currentSum += parseInt(data);
-                    if (callback && !!currentSum) {  // if has callback funtion
+                    if (callback && currentSum !== undefined) {  // if has callback funtion
                         callback(currentSum);
                     }
                 }
@@ -314,20 +335,21 @@ $(function () {
         }
 
         // no pass currentSum
-        if (!currentSum) {
+        if (currentSum == undefined) {
             allLis.each(function () {
-                if (!isValidNum(that.find('span.unread').text())) {
+                if (!isValidNum($(this).find('span.unread').text())) {
                     return false;
                 }
-                getData.push(that.find('span.unread').text());
+                getData.push($(this).find('span.unread').text());
             });
             if (getData.length == 5) {
                 currentSum = getSumOfArray(getData);
+                resetButton();
             }
         }
 
-        // display currentSum if not undefine
-        if (!!currentSum) {
+        // display currentSum if not undefined
+        if (currentSum !== undefined) {
             that.find('p.result').text(currentSum);
             var d = new $.Deferred();
             // random fail
@@ -336,6 +358,7 @@ $(function () {
             } else {
                 say.text('大气泡：楼主异步调用战斗力感人，目测不超过' + currentSum);
             }
+            resetButton();
         }
         return d.promise();
     }

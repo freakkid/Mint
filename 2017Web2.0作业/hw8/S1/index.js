@@ -2,22 +2,35 @@ $(function () {
     const allLis = $('#control-ring li'),
         infoBar = $('#info-bar');
     allLis.attr('randomID', generateRandomID());    // new attr: all lis get when new starting as a ID of a session
-    // red dot disappear when mouse leave button
-    $('#button').mouseleave(function () {
-        allLis.removeClass("no-pointer-active").removeClass("no-pointer-active-color").addClass("pointer-active-color");
+
+    function resetAll() {
+        resetButton();
         allLis.find("span.unread").hide();
-        allLis.attr('randomID', generateRandomID());
         infoBar.find('p.result').text("");
-    });
+    }
+
+    function resetButton() {
+        allLis.removeClass("no-pointer-active").removeClass("no-pointer-active-color").
+            addClass("pointer-active-color");
+        allLis.attr('randomID', generateRandomID());
+    }
+    // red dot disappear when mouse leave button
+    $('#button').mouseleave(resetAll);
+    $('#button').hover(resetAll);
 
     // send get request to server and get random number
     // check the response data is valid number or not
     // if valid show red dot and the number
     allLis.on('click', function () {
+        if (infoBar.find('p.result').text() !== "") {
+            infoBar.find('p.result').text("");
+        }
         allLis.addClass("no-pointer-active");   // all lis are disable click
         const thisId = $(this).attr('id'),      // get id of current li 
             randomID = $(this).attr('randomID');      // get raandom ID of current li
-        const otherLis = allLis.not('#' + thisId).not("no-pointer-active"); // other non-clicked lis
+        const otherLis = allLis.not('#' + thisId).filter(function () {
+            return $(this).hasClass("pointer-active-color") == true;
+        }); // other non-clicked lis with class["pointer-active-color"]
         otherLis.removeClass("pointer-active-color").addClass("no-pointer-active-color");   // diable color
 
         $(this).find('span.unread').text('···');
@@ -32,18 +45,14 @@ $(function () {
                 alert("Connection error" + error);
             },
             success: function (data) {
-                var timeID = setTimeout(function (data) {
+                if ($('#' + thisId).attr('randomID') == randomID) { // check if restart ask for new number from server
                     $('#' + thisId + ' span.unread').text(data);    // display number
+                    $(this).removeClass("pointer-active-color").addClass("no-pointer-active-color");    // diable current li color
                     otherLis.removeClass("no-pointer-active").removeClass("no-pointer-active-color").addClass("pointer-active-color");
-                    $(this).addClass("no-pointer-active-color");    // diable current li color
-                }, 1000, data);
-                if ($('#' + thisId).attr('randomID') != randomID) { // check if restart ask for new number from server
-                    clearTimeout(timeID);
                 }
             }
         });
     });
-
 
     // send get request to server and get the sum of li
     // check the response data is valid number or not
@@ -58,6 +67,7 @@ $(function () {
         });
         if (getData.length == 5) {
             $(this).find('p.result').text(getSumOfArray(getData));
+            resetButton();
         }
 
     });
