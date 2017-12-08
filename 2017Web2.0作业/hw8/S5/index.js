@@ -52,11 +52,6 @@ $(function () {
 
         that.find('span.unread').text('···').show();
         var d = new $.Deferred();
-        if (currentSum !== undefined && !!Math.round(Math.random())) {
-            d.reject(new RamdonError('A：这不是个天大的秘密' + currentSum, currentSum));
-        } else {
-            say.text('A：这是个天大的秘密');
-        }
         $.ajax({
             url: "/",
             type: "GET",
@@ -72,6 +67,11 @@ $(function () {
                         addClass("pointer-active-color");
                     $('#' + thisId + ' span.unread').text(data);    // display number
                     currentSum += parseInt(data);
+                    if (currentSum !== undefined && !!Math.round(Math.random())) {
+                        d.reject(new RamdonError('A：这不是个天大的秘密' + currentSum, currentSum));
+                    } else {
+                        say.text('A：这是个天大的秘密');
+                    }
                     if (callback) {  // if has callback 
                         callback(currentSum);
                     }
@@ -97,11 +97,7 @@ $(function () {
 
         that.find('span.unread').text('···').show();
         var d = new $.Deferred();
-        if (currentSum !== undefined && !!Math.round(Math.random())) {
-            d.reject(new RamdonError('B：我知道' + currentSum, currentSum));
-        } else {
-            say.text('B：我不知道');
-        }
+
         $.ajax({
             url: "/",
             type: "GET",
@@ -117,6 +113,11 @@ $(function () {
                         addClass("pointer-active-color");
                     $('#' + thisId + ' span.unread').text(data);    // display number
                     currentSum += parseInt(data);
+                    if (currentSum !== undefined && !!Math.round(Math.random())) {
+                        d.reject(new RamdonError('B：我知道' + currentSum, currentSum));
+                    } else {
+                        say.text('B：我不知道');
+                    }
                     if (callback) {  // if has callback funtion
                         callback(currentSum);
                     }
@@ -142,11 +143,7 @@ $(function () {
 
         that.find('span.unread').text('···').show();
         var d = new $.Deferred();
-        if (currentSum !== undefined && !!Math.round(Math.random())) {
-            d.reject(new RamdonError('C：你知道' + currentSum, currentSum));
-        } else {
-            say.text('C：你不知道');
-        }
+
         $.ajax({
             url: "/",
             type: "GET",
@@ -162,6 +159,11 @@ $(function () {
                         addClass("pointer-active-color");
                     $('#' + thisId + ' span.unread').text(data);    // display number
                     currentSum += parseInt(data);
+                    if (currentSum !== undefined && !!Math.round(Math.random())) {
+                        d.reject(new RamdonError('C：你知道' + currentSum, currentSum));
+                    } else {
+                        say.text('C：你不知道');
+                    }
                     if (callback) {  // if has callback funtion
                         callback(currentSum);
                     }
@@ -187,11 +189,7 @@ $(function () {
 
         that.find('span.unread').text('···').show();
         var d = new $.Deferred();
-        if (currentSum !== undefined && !!Math.round(Math.random())) {
-            d.reject(new RamdonError('D：他知道' + currentSum, currentSum));
-        } else {
-            say.text('D：他不知道');
-        }
+
         $.ajax({
             url: "/",
             type: "GET",
@@ -207,6 +205,11 @@ $(function () {
                         addClass("pointer-active-color");
                     $('#' + thisId + ' span.unread').text(data);    // display number
                     currentSum += parseInt(data);
+                    if (currentSum !== undefined && !!Math.round(Math.random())) {
+                        d.reject(new RamdonError('D：他知道' + currentSum, currentSum));
+                    } else {
+                        say.text('D：他不知道');
+                    }
                     if (callback) {  // if has callback funtion
                         callback(currentSum);
                     }
@@ -232,11 +235,7 @@ $(function () {
 
         that.find('span.unread').text('···').show();
         var d = new $.Deferred();
-        if (currentSum !== undefined && !!Math.round(Math.random())) {
-            d.reject(new RamdonError('E：才不怪' + currentSum, currentSum));
-        } else {
-            say.text('E：才怪');
-        }
+
         $.ajax({
             url: "/",
             type: "GET",
@@ -252,6 +251,11 @@ $(function () {
                         addClass("pointer-active-color");
                     $('#' + thisId + ' span.unread').text(data);    // display number
                     currentSum += parseInt(data);
+                    if (currentSum !== undefined && !!Math.round(Math.random())) {
+                        d.reject(new RamdonError('E：才不怪' + currentSum, currentSum));
+                    } else {
+                        say.text('E：才怪');
+                    }
                     if (callback) {  // if has callback funtion
                         callback(currentSum);
                     }
@@ -302,12 +306,15 @@ $(function () {
             that.find('p.result').text(currentSum);
             var d = new $.Deferred();
             // random fail
-            if (!!arguments[1] && !!Math.round(Math.random())) {
-                d.reject(new RamdonError('大气泡：楼主异步调用战斗力不感人，目测不超过' + currentSum, currentSum));
-            } else {
-                say.text('大气泡：楼主异步调用战斗力感人，目测不超过' + currentSum);
-            }
-            resetButton();
+            setTimeout(() => {
+                if (!!arguments[1] && !!Math.round(Math.random())) {
+                    d.reject(new RamdonError('大气泡：楼主异步调用战斗力不感人，目测不超过' + currentSum, currentSum));
+                } else {
+                    say.text('大气泡：楼主异步调用战斗力感人，目测不超过' + currentSum);
+                }
+                resetButton();
+            }, 2000);
+
         }
         return d.promise();
     }

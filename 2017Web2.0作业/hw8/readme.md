@@ -32,9 +32,9 @@
     大气泡：楼主异步调用战斗力不感人，目测不超过+currentSum
     ```
 
-    + 是在请求随机数之前随机失败，因此随机失败返回的currentSum是加上随机数之前的值
+    + 是在请求随机数之后
 
-* S2-S5采用callback，S5使用了ta发在群上的$.Deferred()方法catch错误
+* S2-S5采用callback，S5使用了promimse方法让caller获取callee的信息
 
 * S5代码有点冗余但我想不到什么好办法精简了qaq
 
