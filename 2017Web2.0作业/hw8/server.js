@@ -7,7 +7,7 @@ var port = 3000;
 http.createServer(function(req,res){
   var pathname = url.parse(req.url).pathname;
   var mimeType = getMimeType(pathname);
-  console.log(req.url);
+  // console.log(req.url);
   if (!!mimeType) {
     handlePage(req, res, pathname);
   } else {
@@ -33,7 +33,7 @@ function getMimeType(pathname) {
 
 function handlePage(req, res, pathname) {
   var filePath = __dirname + pathname;
-  console.log(__dirname);
+  //console.log(__dirname);
   var mimeType = getMimeType(pathname);
   if (fs.existsSync(filePath)) {
     fs.readFile(filePath, function(err, data){
@@ -59,7 +59,7 @@ function handleAjax(req, res) {
   setTimeout(function(){
     res.writeHead(200, {'Content-Type': 'text/plain'});
     res.end("" + random_num);
-    console.log(random_num);
+    // console.log(random_num);
   }, random_time);
 }
 

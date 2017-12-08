@@ -8,7 +8,13 @@ $(function () {
     function resetAll() {
         resetButton();
         allLis.find("span.unread").hide();
-        infoBar.find('p.result').text("");
+        clearBubbleResult();
+    }
+
+    function clearBubbleResult() {
+        if (infoBar.find('p.result').text() !== "") {
+            infoBar.find('p.result').text("");
+        }
     }
 
     function resetButton() {
@@ -25,9 +31,7 @@ $(function () {
     // check the response data is valid number or not
     // if valid show red dot and the number
     function allLisClickHandle() {
-        if (infoBar.find('p.result').text() !== "") {
-            infoBar.find('p.result').text("");
-        }
+        clearBubbleResult();
         var that = arguments.length <= 1 ? $(this) : arguments[0],
             callback = arguments[1],        // has paramenter is callback
             isParallel = arguments[2];      // check if parallel
@@ -36,18 +40,16 @@ $(function () {
         allLis.addClass("no-pointer-active");   // all lis are disable click
         const thisId = that.attr('id'),      // get id of current li 
             randomID = that.attr('randomID');      // get raandom ID of current li
-        const otherLis = allLis.not('#' + thisId).filter(function() {
+        otherLis = allLis.not('#' + thisId).filter(function() {
             return $(this).hasClass("pointer-active-color") == true;
         }); // other non-clicked lis with class["pointer-active-color"]
         otherLis.removeClass("pointer-active-color").addClass("no-pointer-active-color");   // diable color
 
-        that.find('span.unread').text('···');
-        that.find("span.unread").show();
+        that.find('span.unread').text('···').show();
         $.ajax({
             url: "/",
             type: "GET",
             dataType: "text",
-            context: this,
             aysnc: false,
             cache: false,
             error: function (error) {
@@ -61,12 +63,7 @@ $(function () {
                         otherLis.removeClass("no-pointer-active").removeClass("no-pointer-active-color").addClass("pointer-active-color");
                     }
                     if (callback) {
-                        try {
-                            callback();
-                        }
-                        catch (e) {
-
-                        }
+                        callback();
                     }
                 }
             },

@@ -6,7 +6,13 @@ $(function () {
     function resetAll() {
         resetButton();
         allLis.find("span.unread").hide();
-        infoBar.find('p.result').text("");
+        clearBubbleResult();
+    }
+
+    function clearBubbleResult() {
+        if (infoBar.find('p.result').text() !== "") {
+            infoBar.find('p.result').text("");
+        }
     }
 
     function resetButton() {
@@ -22,19 +28,16 @@ $(function () {
     // check the response data is valid number or not
     // if valid show red dot and the number
     allLis.on('click', function () {
-        if (infoBar.find('p.result').text() !== "") {
-            infoBar.find('p.result').text("");
-        }
+        clearBubbleResult();
         allLis.addClass("no-pointer-active");   // all lis are disable click
         const thisId = $(this).attr('id'),      // get id of current li 
             randomID = $(this).attr('randomID');      // get raandom ID of current li
-        const otherLis = allLis.not('#' + thisId).filter(function () {
+        otherLis = allLis.not('#' + thisId).filter(function () {
             return $(this).hasClass("pointer-active-color") == true;
         }); // other non-clicked lis with class["pointer-active-color"]
         otherLis.removeClass("pointer-active-color").addClass("no-pointer-active-color");   // diable color
 
-        $(this).find('span.unread').text('···');
-        $(this).find("span.unread").show();
+        $(this).find('span.unread').text('···').show();
         $.ajax({
             url: "/",
             type: "GET",

@@ -8,7 +8,13 @@ $(function () {
     function resetAll() {
         resetButton();
         allLis.find("span.unread").hide();
-        infoBar.find('p.result').text("");
+        clearBubbleResult();
+    }
+
+    function clearBubbleResult() {
+        if (infoBar.find('p.result').text() !== "") {
+            infoBar.find('p.result').text("");
+        }
     }
 
     function resetButton() {
@@ -25,33 +31,23 @@ $(function () {
     // check the response data is valid number or not
     // if valid show red dot and the number
     function allLisClickHandle() {
-        if (infoBar.find('p.result').text() !== "") {
-            infoBar.find('p.result').text("");
-        }
-        var that,
-            callback;
-        if (arguments.length <= 1) {    // check number of arguments
-            that = $(this);             // called by click
-        } else {                        // has paramenter is callback
-            that = arguments[0];
-            callback = arguments[1];
-        }
+        clearBubbleResult();
+        var that = arguments.length <= 1 ? $(this) : arguments[0],  // check number of arguments
+        callback = arguments[1];
         
         allLis.addClass("no-pointer-active");   // all lis are disable click
         const thisId = that.attr('id'),      // get id of current li 
             randomID = that.attr('randomID');      // get raandom ID of current li
-        const otherLis = allLis.not('#' + thisId).filter(function() {
+        otherLis = allLis.not('#' + thisId).filter(function() {
             return $(this).hasClass("pointer-active-color") == true;
         }); // other non-clicked lis with class["pointer-active-color"]
         otherLis.removeClass("pointer-active-color").addClass("no-pointer-active-color");   // diable color
 
-        that.find('span.unread').text('···');
-        that.find("span.unread").show();
+        that.find('span.unread').text('···').show();
         $.ajax({
             url: "/",
             type: "GET",
             dataType: "text",
-            context: this,
             aysnc: false,
             error: function (error) {
                 alert("Connection error" + error);
@@ -84,7 +80,7 @@ $(function () {
         });
         if (getData.length == 5) {
             $(this).find('p.result').text(getSumOfArray(getData));
-            resetButton()
+            resetButton();
         }
     });
 
