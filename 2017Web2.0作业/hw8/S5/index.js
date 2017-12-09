@@ -40,7 +40,8 @@ $(function () {
         clearBubbleResult();
         var that = arguments.length <= 1 ? $(this) : arguments[0],  // check number of arguments
             callback = arguments[1],
-            currentSum = arguments[2];
+            currentSum = arguments[2],
+            displayMessage = arguments[3];
 
         allLis.addClass("no-pointer-active");   // all lis are disable click
         const thisId = that.attr('id'),      // get id of current li 
@@ -51,7 +52,6 @@ $(function () {
         otherLis.removeClass("pointer-active-color").addClass("no-pointer-active-color");   // diable color
 
         that.find('span.unread').text('···').show();
-        var d = new $.Deferred();
         $.ajax({
             url: "/",
             type: "GET",
@@ -68,7 +68,7 @@ $(function () {
                     $('#' + thisId + ' span.unread').text(data);    // display number
                     currentSum += parseInt(data);
                     if (currentSum !== undefined && !!Math.round(Math.random())) {
-                        d.reject(new RamdonError('A：这不是个天大的秘密' + currentSum, currentSum));
+                        displayMessage('A：这不是个天大的秘密' + currentSum, currentSum);
                     } else {
                         say.text('A：这是个天大的秘密');
                     }
@@ -78,14 +78,14 @@ $(function () {
                 }
             },
         });
-        return d.promise();
     }
 
     function bHandler() {
         clearBubbleResult();
         var that = arguments.length <= 1 ? $(this) : arguments[0],  // check number of arguments
             callback = arguments[1],
-            currentSum = arguments[2];
+            currentSum = arguments[2],
+            displayMessage = arguments[3];
 
         allLis.addClass("no-pointer-active");   // all lis are disable click
         const thisId = that.attr('id'),      // get id of current li 
@@ -96,7 +96,6 @@ $(function () {
         otherLis.removeClass("pointer-active-color").addClass("no-pointer-active-color");   // diable color
 
         that.find('span.unread').text('···').show();
-        var d = new $.Deferred();
 
         $.ajax({
             url: "/",
@@ -114,7 +113,7 @@ $(function () {
                     $('#' + thisId + ' span.unread').text(data);    // display number
                     currentSum += parseInt(data);
                     if (currentSum !== undefined && !!Math.round(Math.random())) {
-                        d.reject(new RamdonError('B：我知道' + currentSum, currentSum));
+                        displayMessage('B：我知道' + currentSum, currentSum);
                     } else {
                         say.text('B：我不知道');
                     }
@@ -124,14 +123,14 @@ $(function () {
                 }
             },
         });
-        return d.promise();
     }
 
     function cHandler() {
         clearBubbleResult();
         var that = arguments.length <= 1 ? $(this) : arguments[0],  // check number of arguments
             callback = arguments[1],
-            currentSum = arguments[2];
+            currentSum = arguments[2],
+            displayMessage = arguments[3];
 
         allLis.addClass("no-pointer-active");   // all lis are disable click
         const thisId = that.attr('id'),      // get id of current li 
@@ -142,7 +141,6 @@ $(function () {
         otherLis.removeClass("pointer-active-color").addClass("no-pointer-active-color");   // diable color
 
         that.find('span.unread').text('···').show();
-        var d = new $.Deferred();
 
         $.ajax({
             url: "/",
@@ -160,7 +158,7 @@ $(function () {
                     $('#' + thisId + ' span.unread').text(data);    // display number
                     currentSum += parseInt(data);
                     if (currentSum !== undefined && !!Math.round(Math.random())) {
-                        d.reject(new RamdonError('C：你知道' + currentSum, currentSum));
+                        displayMessage('C：你知道' + currentSum, currentSum);
                     } else {
                         say.text('C：你不知道');
                     }
@@ -170,14 +168,14 @@ $(function () {
                 }
             },
         });
-        return d.promise();
     }
 
     function dHandler() {
         clearBubbleResult();
         var that = arguments.length <= 1 ? $(this) : arguments[0],  // check number of arguments
             callback = arguments[1],
-            currentSum = arguments[2];
+            currentSum = arguments[2],
+            displayMessage = arguments[3];
 
         allLis.addClass("no-pointer-active");   // all lis are disable click
         const thisId = that.attr('id'),      // get id of current li 
@@ -188,7 +186,6 @@ $(function () {
         otherLis.removeClass("pointer-active-color").addClass("no-pointer-active-color");   // diable color
 
         that.find('span.unread').text('···').show();
-        var d = new $.Deferred();
 
         $.ajax({
             url: "/",
@@ -206,7 +203,7 @@ $(function () {
                     $('#' + thisId + ' span.unread').text(data);    // display number
                     currentSum += parseInt(data);
                     if (currentSum !== undefined && !!Math.round(Math.random())) {
-                        d.reject(new RamdonError('D：他知道' + currentSum, currentSum));
+                        displayMessage('D：他知道' + currentSum, currentSum);
                     } else {
                         say.text('D：他不知道');
                     }
@@ -216,14 +213,14 @@ $(function () {
                 }
             },
         });
-        return d.promise();
     }
 
     function eHandler() {
         clearBubbleResult();
         var that = arguments.length <= 1 ? $(this) : arguments[0],  // check number of arguments
             callback = arguments[1],
-            currentSum = arguments[2];
+            currentSum = arguments[2],
+            displayMessage = arguments[3];
 
         allLis.addClass("no-pointer-active");   // all lis are disable click
         const thisId = that.attr('id'),      // get id of current li 
@@ -234,7 +231,6 @@ $(function () {
         otherLis.removeClass("pointer-active-color").addClass("no-pointer-active-color");   // diable color
 
         that.find('span.unread').text('···').show();
-        var d = new $.Deferred();
 
         $.ajax({
             url: "/",
@@ -252,7 +248,7 @@ $(function () {
                     $('#' + thisId + ' span.unread').text(data);    // display number
                     currentSum += parseInt(data);
                     if (currentSum !== undefined && !!Math.round(Math.random())) {
-                        d.reject(new RamdonError('E：才不怪' + currentSum, currentSum));
+                        displayMessage('E：才不怪' + currentSum, currentSum);
                     } else {
                         say.text('E：才怪');
                     }
@@ -262,7 +258,6 @@ $(function () {
                 }
             },
         });
-        return d.promise();
     }
 
     $('#A').click(aHandler);
@@ -277,15 +272,10 @@ $(function () {
     // check the response data is valid number or not
     // if valid show the sum in big result circle
     function bubbleHandler() {
-        var that,
-            currentSum,
-            getData = [];
-        if (arguments.length <= 1) {    // check number of arguments
-            that = $(this);             // called by click
-        } else {                        // has paramenter is callback
-            that = arguments[0];
-            currentSum = arguments[1];
-        }
+        var getData = [];
+            that = arguments.length <= 1 ? $(this) : arguments[0];
+            currentSum = arguments[1],
+            displayMessage = arguments[2];
 
         // no pass currentSum
         if (currentSum == undefined) {
@@ -304,19 +294,16 @@ $(function () {
         // display currentSum if not undefined
         if (currentSum !== undefined) {
             that.find('p.result').text(currentSum);
-            var d = new $.Deferred();
             // random fail
             setTimeout(() => {
                 if (!!arguments[1] && !!Math.round(Math.random())) {
-                    d.reject(new RamdonError('大气泡：楼主异步调用战斗力不感人，目测不超过' + currentSum, currentSum));
+                    displayMessage('大气泡：楼主异步调用战斗力不感人，目测不超过' + currentSum);
                 } else {
                     say.text('大气泡：楼主异步调用战斗力感人，目测不超过' + currentSum);
                 }
                 resetButton();
             }, 2000);
-
         }
-        return d.promise();
     }
 
     infoBar.on('click', bubbleHandler);
@@ -346,9 +333,7 @@ $(function () {
                 objectHandler = eHandler;
                 break;
         }
-        return objectHandler($(objectID), callback, currentSum).fail(function (err) {
-            say.text(err.message);
-        });
+        return objectHandler($(objectID), callback, currentSum, (message) => (say.text(message)));
     }
 
     function ultimateSecret(order) {
@@ -358,9 +343,7 @@ $(function () {
                 oneLiClick(order[2], function (currentSum) {
                     oneLiClick(order[3], function (currentSum) {
                         oneLiClick(order[4], function (currentSum) {
-                            bubbleHandler(infoBar, currentSum).fail(function (err) {
-                                say.text(err.message);
-                            });
+                            bubbleHandler(infoBar, currentSum, (message) => (say.text(message)));
                         }, currentSum);
                     }, currentSum);
                 }, currentSum);
@@ -386,6 +369,11 @@ $(function () {
         return order;
     }
 
+    // swap two item in array by index
+    function swap(t, i, array) {
+        array[t] = [array[i], array[i] = array[t]][0];
+    }
+
     // check if number valid
     function isValidNum(num) {
         return $.isNumeric(num) && num % 1 === 0 && num >= 1 && num <= 10;
@@ -399,19 +387,6 @@ $(function () {
     function generateRandomID() {
         return Math.random();
     }
-
-    // swap two item in array by index
-    function swap(t, i, array) {
-        array[t] = [array[i], array[i] = array[t]][0];
-    }
-
-    // customed error
-    function RamdonError(message, currentSum) {
-        this.message = message || "RamdonError";
-        this.name = "RamdonError";
-        this.currentSum = currentSum;
-    }
-    RamdonError.prototype = new Error();
-    RamdonError.prototype.constructor = RamdonError;
+    
 });
 
