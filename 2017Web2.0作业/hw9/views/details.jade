@@ -1,16 +1,27 @@
 doctype html
 html(lang="en")
-  head
-    title= pageTitle
-    script(type='text/javascript').
-      if (foo) bar(1 + 5)
-  body
-    h1 Jade - node template engine
-    #container.col
-      if youAreUsingJade
-        p You are amazing
-      else
-        p Get on it!
-      p.
-        Jade is a terse and simple templating language with a
-        strong focus on performance and powerful features.
+    head
+        title Details
+        meta(charset="utf-8")
+        link(rel="stylesheet", type="text/css", href="/stylesheets/style.css")
+        link(rel="shortcut icon", href="images/ai.png")
+        script(src="javascripts/jquery1.8.0.min.js", defer="defer")
+        script(src="javascripts/details.js", defer="defer")
+    body
+        div#left-part
+        div#right-part
+        div.middle-part
+            input(type="button", name="SIGNOUT", value="sign out")
+            p.tip=Message || ""
+            ul#user-info
+                if Username
+                    li='Username: ' + Username
+                if StudentID
+                    li='StudentId: ' + StudentID
+                if Phone
+                    li='Phone: ' + Phone
+                if Email
+                    li='E-mail: ' + Email
+
+        img(src="images/ai.png", alt="ai", class="ai")
+

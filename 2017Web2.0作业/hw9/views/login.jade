@@ -1,5 +1,33 @@
-extends layout
+doctype html
+html(lang="en")
+    head
+        title Login
+        meta(charset="utf-8")
+        link(rel="stylesheet", type="text/css", href="/stylesheets/style.css")
+        link(rel="shortcut icon", href="images/ai.png")
+        script(src="javascripts/jquery1.8.0.min.js", defer="defer")
+        script(src="javascripts/validator.js", defer="defer")
+        script(src="javascripts/login.js", defer="defer")
+    
+    body
+        div#left-part
+        div#right-part
+        div.middle-part
+            h1 Login
+            form
+                label(for="username-input") Username:
+                input(id="username-input", type="text", name="username")
 
-block content
-  h1= title
-  p Welcome to #{title}
+                label(for="password-input") Password:
+                input(id="password-input", type="password", name="password")
+
+                input(type="button", name="LOGIN", value="LOGIN")
+            
+            div#error-info
+                p#username-error
+                p#password-error
+            
+            p.to-register Create an account
+
+        img(src="images/ai.png", alt="ai", class="ai")
+

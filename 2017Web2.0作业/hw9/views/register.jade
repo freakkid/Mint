@@ -6,16 +6,18 @@ html(lang="en")
         link(rel="stylesheet", type="text/css", href="/stylesheets/style.css")
         link(rel="shortcut icon", href="images/ai.png")
         script(src="javascripts/jquery1.8.0.min.js", defer="defer")
+        script(src="javascripts/validator.js", defer="defer")
         script(src="javascripts/register.js", defer="defer")
     
     body
         div#left-part
         div#right-part
-            input(type="button", name="SIGNIN", value="sign in")
-
         div.middle-part
+            
+            input(type="button", name="SIGNIN", value="sign in")
+            
             h1 Register
-            form(id="register", action="/", method="post")
+            form
                 label(for="username-input") Username:
                 input(id="username-input", type="text", name="username")
 
@@ -38,12 +40,12 @@ html(lang="en")
                 input(type="button", name="SUBMIT", value="SUBMIT")
             
             div#error-info
-                p#username-error  username-error
-                p#studentid-error username-error
-                p#phone-error username-error
-                p#email-error      username-error
-                p#password-error username-error
-                p#confirm-error   username-error
+                p#username-error
+                p#studentid-error
+                p#phone-error
+                p#email-error 
+                p#password-error
+                p#confirm-error
 
-        img(src="images/ai.png", alt="ai",class="ai")
+        img(src="images/ai.png", alt="ai", class="ai")
 

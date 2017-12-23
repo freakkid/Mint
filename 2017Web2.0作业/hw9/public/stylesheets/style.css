@@ -55,7 +55,7 @@ h1 {
   width: auto;
 }
 
-#register {
+.middle-part > form {
   position: absolute;
   top: 30%;
   left: 50px;
@@ -65,21 +65,21 @@ h1 {
   width: 400px;
 }
 
-#register > p {
-  background-color: slateblue;
+.middle-part > p {
   margin: 0;
   padding: 0;
   width: 155px;
 }
 
-form > label {
+.middle-part > form > label {
   font-size: 15pt;
   font-weight: bold;
   margin: 0;
   padding: 0;
 }
 
-input[type="text"] {
+
+input[type="password"], input[type="text"] {
   margin-bottom: 8px;
   width: 400px;
   height: 25px;
@@ -88,13 +88,14 @@ input[type="text"] {
   outline: none;
 }
 
-input[type="password"] {
-  margin-bottom: 8px;
-  width: 400px;
-  height: 25px;
-  border-radius: 10px;
-  font-size: 20pt;
-  outline: none;
+input[name="SIGNIN"], input[name="SIGNOUT"] {
+  left: 700px !important;
+  top: -30px !important;
+  height: 25px !important;
+  width: 75px !important;
+  border-radius: 0 !important;
+  font-size: 12pt !important;
+  /* border: none !important; */
 }
 
 input[type="button"] {
@@ -108,19 +109,9 @@ input[type="button"] {
   outline: none;
 }
 
-input[name="SIGNIN"] {
-  position: absolute;
-  margin-left: 88%;
-  margin-top: 2%;
-  height: 25px;
-  width: 70px;
-  background-color: #F6DFB5;
-  border-radius: 0;
-  font-size: 12pt;
-  font-weight: bold;
-  outline: none;
+input[name="LOGIN"] {
+  left: 300px;
 }
-
 
 input[name="RESET"] {
   left: 180px;
@@ -153,8 +144,28 @@ input[name="SUBMIT"] {
   font-weight: bold;
 }
 
-li {
+#user-info > li {
   list-style: none;
   margin-bottom: 20px;
 }
 
+p.to-register {
+  position: absolute;
+  top: 250px;
+  left: 460px;
+  color: white;
+  font-size: 12pt;
+  text-decoration-line: underline;
+}
+
+p.to-register:hover {
+  color: rgb(216, 56, 16)
+}
+
+p.tip {
+  position: absolute;
+  color: white;
+  left: 150px;
+  top: 80px;
+  width: 250px;
+}
